@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import za.co.monate.retail.checkout.dto.DeliveryRoute;
 import za.co.monate.retail.checkout.dto.FulfillmentProposal;
 import za.co.monate.retail.catalog.model.PackSize;
-import za.co.monate.retail.identity.model.Product;
+import za.co.monate.retail.catalog.model.Product;
 import za.co.monate.retail.inventory.model.StockLevel;
 import za.co.monate.retail.core.util.DistanceCalculator;
 

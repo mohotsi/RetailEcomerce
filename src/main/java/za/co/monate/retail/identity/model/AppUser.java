@@ -54,4 +54,12 @@ public class AppUser {
     // ========================================================================
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private EmployeeProfile employeeProfile;
+
+    // ========================================================================
+    // ADDRESS BOOK
+    // A user can have multiple addresses (Home, Office, Holiday House).
+    // The cascade ensures if a user is deleted, their addresses are deleted.
+    // ========================================================================
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Address> addressBook = new ArrayList<>();
 }

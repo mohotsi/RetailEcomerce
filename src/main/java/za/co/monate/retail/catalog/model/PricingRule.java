@@ -7,7 +7,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import za.co.monate.retail.catalog.model.enums.PromoType;
-import za.co.monate.retail.identity.model.Product;
 
 import java.time.LocalDateTime;
 

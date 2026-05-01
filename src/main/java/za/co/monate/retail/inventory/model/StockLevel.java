@@ -6,7 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import za.co.monate.retail.identity.model.Product;
+import za.co.monate.retail.catalog.model.Product;
+import za.co.monate.retail.inventory.model.enums.StockStatus;
 
 @Entity
 @Data
@@ -26,6 +27,8 @@ public class StockLevel {
     @ManyToOne
     @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
+    @Enumerated(EnumType.STRING)
+    private StockStatus stockStatus;
 
     private int availableQuantity;
     
