@@ -5,10 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.jspecify.annotations.Nullable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import za.co.monate.retail.identity.model.enums.AccountStatus;
 import za.co.monate.retail.identity.model.enums.AppRole;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -17,7 +22,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Table(name = "app_users") // 'user' is often a reserved keyword in databases like Postgres
-public class AppUser {
+public class AppUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,4 +67,50 @@ public class AppUser {
     // ========================================================================
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> addressBook = new ArrayList<>();
+
+   // ========================================================================
+    // SPRING SECURITY REQUIRED METHODS
+    // These methods translate our custom database logic into a language
+    // that the Spring Security framework understands.
+    // ========================================================================
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // We take our AppRole (e.g., MERCHANDISER) and turn it into an Authority.
+        // Spring Security expects roles to start with "ROLE_", so we add it.
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return passwordHash;
+    }
+
+    @Override
+    public String getUsername() {
+        return email; // In our system, the Email is the Username
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        // Here we use our custom AccountStatus!
+        return status != AccountStatus.PERMANENTLY_BANNED
+                && status != AccountStatus.TEMPORARILY_BLOCKED;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        // B2B clients waiting for Admin approval cannot log in yet
+        return status != AccountStatus.PENDING_APPROVAL;
+    }
 }
