@@ -10,7 +10,9 @@ import za.co.monate.retail.identity.model.enums.AppRole;
 import za.co.monate.retail.inventory.model.StockLevel;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * ============================================================================
@@ -50,6 +52,9 @@ public class Product {
     private String manufacturer; // e.g., "Unilever"
     private String brand;        // e.g., "Knorr"
 
+    @Column(length = 500)
+    private String imageUrl;
+
     @ElementCollection
     @CollectionTable(name = "product_search_tags", joinColumns = @JoinColumn(name = "product_id"))
     @Column(name = "tag")
@@ -84,7 +89,7 @@ public class Product {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    private List<Category> categories = new ArrayList<>();
+    private Set<Category> categories = new HashSet<>();
 
     // --- RICH MEDIA ---
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -106,6 +111,12 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<PricingRule> activePricingRules = new ArrayList<>();
+
+    // A Base Product has many Variants (sizes/colors)
+    // CascadeType.ALL means if we delete the Base Product, it deletes all variants
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<ProductVariant> variants = new ArrayList<>();
 
     /**
      * Convenience method to get total aggregate stock across all warehouses.
