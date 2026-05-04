@@ -1,0 +1,26 @@
+{
+  "info": {
+    "_postman_id": "ed31cf25-6d7b-4b9f-b733-9210c83b82bd",
+    "name": "Authenticate",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "3346813"
+  },
+  "item": [
+    {
+      "name": "admin",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "merchandiser",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

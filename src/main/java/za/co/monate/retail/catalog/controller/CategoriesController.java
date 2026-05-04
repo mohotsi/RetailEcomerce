@@ -1,0 +1,39 @@
+package za.co.monate.retail.catalog.controller;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import za.co.monate.retail.catalog.CategoryImportRow;
+import za.co.monate.retail.catalog.repository.ProductRepository;
+import za.co.monate.retail.catalog.service.CatalogService;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/v1/categories")
+@RequiredArgsConstructor
+@Slf4j
+public class CategoriesController {
+
+    private final CatalogService catalogService;
+    private final ProductRepository productRepository;
+
+
+    @PostMapping("/import")
+    @PreAuthorize("hasAuthority('ROLE_SYSTEM_ADMIN')")
+    public ResponseEntity<String> importCategories(@RequestParam("file") MultipartFile file) {
+        // Logic to parse CSV and map to CategoryImportRow
+        catalogService.processBulkCategoriesImport(file);
+        return ResponseEntity.ok("Taxonomy updated successfully");
+    }
+    @PostMapping(value = "/import/json", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAuthority('ROLE_SYSTEM_ADMIN')")
+    public ResponseEntity<String> importCategoriesJson(@RequestBody List<CategoryImportRow> categories) {
+        catalogService.processBulkCategoriesFromJson(categories);
+        return ResponseEntity.ok("Taxonomy updated successfully from JSON payload");
+    }
+}

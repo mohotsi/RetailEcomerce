@@ -1,0 +1,58 @@
+{
+  "info": {
+    "_postman_id": "c7afb9cf-6f1d-4c6c-a236-7aea4d7a5862",
+    "name": "Monate Retail - JSON Taxonomy Import",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "3346813"
+  },
+  "item": [
+    {
+      "name": "Import Master Categories (JSON)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer {{admin_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n  {\n    \"name\": \"Food Cupboard\",\n    \"seoSlug\": \"food-cupboard\",\n    \"parentSlug\": null,\n    \"description\": \"Main grocery department\",\n    \"displayOrder\": 1\n  },\n  {\n    \"name\": \"Fresh Food\",\n    \"seoSlug\": \"fresh-food\",\n    \"parentSlug\": null,\n    \"description\": \"Perishables and bakery\",\n    \"displayOrder\": 2\n  },\n  {\n    \"name\": \"Pharma & Surgical\",\n    \"seoSlug\": \"pharma-surgical\",\n    \"parentSlug\": null,\n    \"description\": \"Medical supplies\",\n    \"displayOrder\": 3\n  },\n  {\n    \"name\": \"Outdoor & Braai\",\n    \"seoSlug\": \"outdoor-braai\",\n    \"parentSlug\": null,\n    \"description\": \"Seasonal cooking\",\n    \"displayOrder\": 4\n  },\n  {\n    \"name\": \"Bonus Buys\",\n    \"seoSlug\": \"bonus-buys\",\n    \"parentSlug\": null,\n    \"description\": \"Promotions and bundles\",\n    \"displayOrder\": 5\n  },\n  {\n    \"name\": \"Household\",\n    \"seoSlug\": \"household\",\n    \"parentSlug\": null,\n    \"description\": \"Cleaning and home care\",\n    \"displayOrder\": 6\n  },\n  {\n    \"name\": \"Personal Care\",\n    \"seoSlug\": \"personal-care\",\n    \"parentSlug\": null,\n    \"description\": \"Hygiene and beauty\",\n    \"displayOrder\": 7\n  },\n  {\n    \"name\": \"Baby Care\",\n    \"seoSlug\": \"baby-care\",\n    \"parentSlug\": null,\n    \"description\": \"Diapers and baby food\",\n    \"displayOrder\": 8\n  },\n  {\n    \"name\": \"Pet Care\",\n    \"seoSlug\": \"pet-care\",\n    \"parentSlug\": null,\n    \"description\": \"Pet food and accessories\",\n    \"displayOrder\": 9\n  },\n  {\n    \"name\": \"Tea\",\n    \"seoSlug\": \"food-tea\",\n    \"parentSlug\": \"food-cupboard\",\n    \"description\": \"Tea varieties\",\n    \"displayOrder\": 10\n  },\n  {\n    \"name\": \"Coffee\",\n    \"seoSlug\": \"food-coffee\",\n    \"parentSlug\": \"food-cupboard\",\n    \"description\": \"Instant and ground coffee\",\n    \"displayOrder\": 20\n  },\n  {\n    \"name\": \"Ethical\",\n    \"seoSlug\": \"pharma-ethical\",\n    \"parentSlug\": \"pharma-surgical\",\n    \"description\": \"Prescription S3-S6\",\n    \"displayOrder\": 10\n  },\n  {\n    \"name\": \"OTC\",\n    \"seoSlug\": \"pharma-otc\",\n    \"parentSlug\": \"pharma-surgical\",\n    \"description\": \"Over-the-counter\",\n    \"displayOrder\": 20\n  },\n  {\n    \"name\": \"Braai Essentials\",\n    \"seoSlug\": \"braai-essentials\",\n    \"parentSlug\": \"outdoor-braai\",\n    \"description\": \"Fuel and wood\",\n    \"displayOrder\": 10\n  },\n  {\n    \"name\": \"Summer Braai\",\n    \"seoSlug\": \"summer-braai\",\n    \"parentSlug\": \"braai-essentials\",\n    \"description\": \"Summer grilling\",\n    \"displayOrder\": 20\n  }\n]",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/api/v1/categories/import/json",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "categories",
+            "import",
+            "json"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "admin_token",
+      "value": "PASTE_YOUR_ADMIN_JWT_HERE"
+    }
+  ]
+}

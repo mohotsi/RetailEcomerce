@@ -1,0 +1,54 @@
+{
+  "info": {
+    "_postman_id": "f6beb171-a0b3-48a4-bc91-53799417db5b",
+    "name": "Monate Retail - 100 Products Import",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "3346813"
+  },
+  "item": [
+    {
+      "name": "Import 100 Products (CSV)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{merchandiser_token}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "value": "baseSku,name,description,categorySlugs,variantSku,variantName,price,stock,isPromotion\nNEST-COF-001,Nescafe Classic 100g,Bold instant coffee,food-cupboard,VAR-COF-001,100g Jar,55.00,100,false\nNEST-COF-002,Nescafe Classic 200g,Bold instant coffee,food-cupboard,VAR-COF-002,200g Jar,95.00,100,false\nNEST-COF-003,Nescafe Gold 100g,Premium coffee,food-cupboard,VAR-COF-003,100g Jar,85.00,100,false\nNEST-COF-004,Nescafe Gold 200g,Premium coffee,food-cupboard,VAR-COF-004,200g Jar,145.00,100,false\nNEST-COF-005,Ricoffy 250g,Coffee chicory blend,food-cupboard,VAR-COF-005,250g Tin,45.00,100,false\nNEST-COF-006,Ricoffy 750g,Coffee chicory blend,food-cupboard,VAR-COF-006,750g Tin,115.00,100,false\nNEST-COF-007,Jacobs Kronung 100g,Smooth coffee,food-cupboard,VAR-COF-007,100g Jar,99.00,100,false\nNEST-COF-008,Jacobs Kronung 200g,Smooth coffee,food-cupboard,VAR-COF-008,200g Jar,175.00,100,false\nNEST-COF-009,House Blend Decaf 200g,Decaf coffee,food-cupboard,VAR-COF-009,200g Jar,110.00,100,false\nNEST-COF-010,Espresso Roast 250g,Dark roast beans,food-cupboard,VAR-COF-010,250g Bag,135.00,100,false\nTEA-CEY-001,Five Roses 50s,Ceylon blend,food-tea,VAR-TEA-001,50 Tagless,28.00,200,false\nTEA-CEY-002,Five Roses 100s,Ceylon blend,food-tea,VAR-TEA-002,100 Tagless,48.50,200,false\nTEA-CEY-003,Joko Tea 50s,Strong tea,food-tea,VAR-TEA-003,50 Tagless,26.00,200,false\nTEA-CEY-004,Joko Tea 100s,Strong tea,food-tea,VAR-TEA-004,100 Tagless,46.00,200,false\nTEA-ROO-005,Freshpak Rooibos 40s,Pure Rooibos,food-tea,VAR-TEA-005,40 Tagless,25.00,200,false\nTEA-ROO-006,Freshpak Rooibos 80s,Pure Rooibos,food-tea,VAR-TEA-006,80 Tagless,42.50,200,false\nTEA-ROO-007,Laager Rooibos 40s,Strong Rooibos,food-tea,VAR-TEA-007,40 Tagless,24.00,200,false\nTEA-ROO-008,Laager Rooibos 80s,Strong Rooibos,food-tea,VAR-TEA-008,80 Tagless,41.00,200,false\nTEA-GRN-009,Green Tea Lemon 20s,Flavored green tea,food-tea,VAR-TEA-009,20 Bags,35.00,200,false\nTEA-GRN-010,Green Tea Mint 20s,Flavored green tea,food-tea,VAR-TEA-010,20 Bags,35.00,200,false\nOTC-MED-001,Panado Tablets 24s,Pain relief,pharma-otc,VAR-OTC-001,Box 24,28.50,300,false\nOTC-MED-002,Panado Syrup 100ml,Pediatric pain relief,pharma-otc,VAR-OTC-002,100ml Bottle,42.00,300,false\nOTC-MED-003,Grandpa Powders 38s,Headache relief,pharma-otc,VAR-OTC-003,Box 38,45.00,300,false\nOTC-MED-004,Aspirin 30s,Heart health,pharma-otc,VAR-OTC-004,Box 30,22.00,300,false\nOTC-MED-005,Vitamin C 500mg,Immune support,pharma-otc,VAR-OTC-005,60 Tabs,85.00,300,false\nOTC-MED-006,Zinc 25mg,Immune support,pharma-otc,VAR-OTC-006,30 Tabs,65.00,300,false\nOTC-MED-007,Cough Syrup 150ml,Dry cough relief,pharma-otc,VAR-OTC-007,150ml Bottle,55.00,300,false\nOTC-MED-008,Lozenges Honey 24s,Throat relief,pharma-otc,VAR-OTC-008,Pack 24,35.00,300,false\nOTC-MED-009,Antacid Liquid 200ml,Heartburn relief,pharma-otc,VAR-OTC-009,200ml Bottle,68.00,300,false\nOTC-MED-010,Allergy Tabs 30s,Antihistamine,pharma-otc,VAR-OTC-010,30 Tabs,95.00,300,false\nETH-MED-001,Metformin 500mg,Diabetes meds,pharma-ethical,VAR-ETH-001,60 Tabs,185.00,50,false\nETH-MED-002,Metformin 850mg,Diabetes meds,pharma-ethical,VAR-ETH-002,60 Tabs,210.00,50,false\nETH-MED-003,Amlodipine 5mg,Blood pressure,pharma-ethical,VAR-ETH-003,30 Tabs,120.00,50,false\nETH-MED-004,Amlodipine 10mg,Blood pressure,pharma-ethical,VAR-ETH-004,30 Tabs,145.00,50,false\nETH-MED-005,Amoxicillin 250mg,Antibiotic,pharma-ethical,VAR-ETH-005,15 Caps,85.00,50,false\nETH-MED-006,Amoxicillin 500mg,Antibiotic,pharma-ethical,VAR-ETH-006,15 Caps,130.00,50,false\nETH-MED-007,Simvastatin 10mg,Cholesterol meds,pharma-ethical,VAR-ETH-007,30 Tabs,95.00,50,false\nETH-MED-008,Simvastatin 20mg,Cholesterol meds,pharma-ethical,VAR-ETH-008,30 Tabs,115.00,50,false\nETH-MED-009,Thyroxine 50mcg,Thyroid meds,pharma-ethical,VAR-ETH-009,30 Tabs,160.00,50,false\nETH-MED-010,Thyroxine 100mcg,Thyroid meds,pharma-ethical,VAR-ETH-010,30 Tabs,195.00,50,false\nBRAAI-001,Sekelbos Wood 10kg,Dry braai wood,summer-braai,VAR-BRAAI-001,10kg Bag,35.00,100,false\nBRAAI-002,Kameeldoring Wood 10kg,Premium hardwood,summer-braai,VAR-BRAAI-002,10kg Bag,45.00,100,false\nBRAAI-003,Charcoal 5kg,Lump wood coal,summer-braai,VAR-BRAAI-003,5kg Bag,55.00,100,false\nBRAAI-004,Briquettes 4kg,Long burning,summer-braai,VAR-BRAAI-004,4kg Bag,49.00,100,false\nBRAAI-005,Firelighters 12pc,Easy ignite,summer-braai,VAR-BRAAI-005,Box 12,25.00,100,false\nBRAAI-006,Matches Extra Long,Safety matches,summer-braai,VAR-BRAAI-006,Box 50,15.00,100,false\nBRAAI-007,Braai Tongs 40cm,Stainless steel,summer-braai,VAR-BRAAI-007,Single,85.00,100,false\nBRAAI-008,Grid Cleaner Brush,Wire brush,summer-braai,VAR-BRAAI-008,Single,65.00,100,false\nBRAAI-009,Braai Marinade 500ml,Spicy BBQ,summer-braai,VAR-BRAAI-009,500ml Bottle,38.00,100,false\nBRAAI-010,Braai Spice 200g,Mixed herbs,summer-braai,VAR-BRAAI-010,200g Shaker,28.00,100,false\nFRESH-001,Full Cream Milk 1L,Fresh milk,fresh-food,VAR-MILK-001,1L Carton,18.99,150,false\nFRESH-002,Full Cream Milk 2L,Fresh milk,fresh-food,VAR-MILK-002,2L Bottle,35.99,150,false\nFRESH-003,Low Fat Milk 1L,Fresh milk,fresh-food,VAR-MILK-003,1L Carton,18.99,150,false\nFRESH-004,Low Fat Milk 2L,Fresh milk,fresh-food,VAR-MILK-004,2L Bottle,35.99,150,false\nFRESH-005,Large Eggs 18s,Farm fresh,fresh-food,VAR-MILK-005,Tray 18,45.00,150,false\nFRESH-006,Large Eggs 30s,Farm fresh,fresh-food,VAR-MILK-006,Tray 30,72.00,150,false\nFRESH-007,Salted Butter 500g,Creamery butter,fresh-food,VAR-MILK-007,500g Block,65.00,150,false\nFRESH-008,Cheddar Cheese 400g,Mature cheddar,fresh-food,VAR-MILK-008,400g Block,85.00,150,false\nFRESH-009,White Bread 700g,Sliced loaf,fresh-food,VAR-MILK-009,Single Loaf,16.50,150,false\nFRESH-010,Brown Bread 700g,Sliced loaf,fresh-food,VAR-MILK-010,Single Loaf,15.50,150,false\nGROC-001,Tastic Rice 2kg,Parboiled rice,food-cupboard,VAR-GROC-001,2kg Bag,38.00,400,false\nGROC-002,Tastic Rice 5kg,Parboiled rice,food-cupboard,VAR-GROC-002,5kg Bag,85.00,400,false\nGROC-003,Sunfoil Oil 2L,Sunflower oil,food-cupboard,VAR-GROC-003,2L Bottle,65.00,400,false\nGROC-004,Sunfoil Oil 5L,Sunflower oil,food-cupboard,VAR-GROC-004,5L Bottle,155.00,400,false\nGROC-005,Ace Maize Meal 2.5kg,Super maize,food-cupboard,VAR-GROC-005,2.5kg Bag,28.00,400,false\nGROC-006,Ace Maize Meal 10kg,Super maize,food-cupboard,VAR-GROC-006,10kg Bag,95.00,400,false\nGROC-007,Selati Sugar 2.5kg,White sugar,food-cupboard,VAR-GROC-007,2.5kg Bag,52.00,400,false\nGROC-008,Selati Sugar 5kg,White sugar,food-cupboard,VAR-GROC-008,5kg Bag,99.00,400,false\nGROC-009,Koo Baked Beans 410g,In tomato sauce,food-cupboard,VAR-GROC-009,410g Tin,14.50,400,false\nGROC-010,Spaghetti 500g,Pasta,food-cupboard,VAR-GROC-010,500g Pack,16.00,400,false\nHOUSE-001,Jik Bleach 750ml,Regular bleach,household,VAR-CLEAN-001,750ml Bottle,24.99,250,false\nHOUSE-002,Jik Bleach 1.5L,Regular bleach,household,VAR-CLEAN-002,1.5L Bottle,45.00,250,false\nHOUSE-003,Sunlight Liquid 750ml,Dish soap,household,VAR-CLEAN-003,750ml Bottle,29.99,250,false\nHOUSE-004,Sunlight Liquid 1.5L,Dish soap,household,VAR-CLEAN-004,1.5L Pouch,55.00,250,false\nHOUSE-005,Handy Andy 750ml,Ammonia cleaner,household,VAR-CLEAN-005,750ml Bottle,28.00,250,false\nHOUSE-006,Omo Auto 2kg,Washing powder,household,VAR-CLEAN-006,2kg Box,75.00,250,false\nHOUSE-007,Omo Auto 3kg,Washing powder,household,VAR-CLEAN-007,3kg Box,105.00,250,false\nHOUSE-008,Comfort Softener 800ml,Fabric softener,household,VAR-CLEAN-008,800ml Refill,35.00,250,false\nHOUSE-009,Black Bags 20s,Refuse bags,household,VAR-CLEAN-009,Roll 20,22.00,250,false\nHOUSE-010,Toilet Paper 9s,2 Ply,household,VAR-CLEAN-010,Pack 9,65.00,250,false\nPET-001,Bobtail Dry Dog 8kg,Steak flavor,pet-care,VAR-PET-001,8kg Bag,189.00,80,false\nPET-002,Bobtail Dry Dog 15kg,Steak flavor,pet-care,VAR-PET-002,15kg Bag,310.00,80,false\nPET-003,Pedigree Wet 400g,Chicken chunks,pet-care,VAR-PET-003,400g Tin,25.00,80,false\nPET-004,Whiskas Dry Cat 1kg,Chicken flavor,pet-care,VAR-PET-004,1kg Box,55.00,80,false\nPET-005,Whiskas Dry Cat 2kg,Chicken flavor,pet-care,VAR-PET-005,2kg Box,105.00,80,false\nPET-006,Whiskas Wet Pouch 85g,Salmon jelly,pet-care,VAR-PET-006,85g Pouch,12.00,80,false\nPET-007,Cat Litter 5kg,Clumping,pet-care,VAR-PET-007,5kg Bag,65.00,80,false\nPET-008,Dog Shampoo 500ml,Tick and flea,pet-care,VAR-PET-008,500ml Bottle,45.00,80,false\nPET-009,Chew Bone Large,Rawhide,pet-care,VAR-PET-009,Single,35.00,80,false\nPET-010,Bird Seed 1kg,Mixed seeds,pet-care,VAR-PET-010,1kg Bag,28.00,80,false\nBUN-001,Monthly Grocery Box,Rice+Maize+Oil+Sugar,\"bonus-buys,food-cupboard\",VAR-BUN-001,Value Kit,250.00,20,true\nBUN-002,Tea Time Hamper,Coffee+Tea+Sugar+Milk,\"bonus-buys,food-cupboard,food-tea\",VAR-BUN-002,Value Kit,180.00,20,true\nBUN-003,Winter Flu Pack,Panado+VitC+CoughSyrup,\"bonus-buys,pharma-otc\",VAR-BUN-003,Health Kit,150.00,20,true\nBUN-004,Ultimate Braai Kit,Wood+Charcoal+Spice,\"bonus-buys,summer-braai\",VAR-BUN-004,Braai Kit,120.00,20,true\nBUN-005,Spring Cleaning Combo,Jik+Sunlight+HandyAndy,\"bonus-buys,household\",VAR-BUN-005,Clean Kit,80.00,20,true\nBUN-006,Laundry Month Pack,Omo 3kg+Comfort,\"bonus-buys,household\",VAR-BUN-006,Laundry Kit,130.00,20,true\nBUN-007,Weekend Breakfast,Eggs+Bread+Butter,\"bonus-buys,fresh-food\",VAR-BUN-007,Fresh Kit,120.00,20,true\nBUN-008,Pet Lover Pack,DogFood+Shampoo+Bone,\"bonus-buys,pet-care\",VAR-BUN-008,Pet Kit,250.00,20,true\nBUN-009,Chronic Meds Prep,Metformin+Amlodipine,\"bonus-buys,pharma-ethical\",VAR-BUN-009,Meds Kit,300.00,20,true\nBUN-010,Office Pantry Pack,Coffee 750g+Tea 100s,\"bonus-buys,food-cupboard\",VAR-BUN-010,Bulk Kit,160.00,20,true",
+              "type": "text",
+              "contentType": "text/csv"
+            }
+          ]
+        },
+        "url": {
+          "raw": "localhost:8080/api/v1/catalog/import",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "v1",
+            "catalog",
+            "import"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "merchandiser_token",
+      "value": "PASTE_MERCHANDISER_JWT_HERE"
+    }
+  ]
+}

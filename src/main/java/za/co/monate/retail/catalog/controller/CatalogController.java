@@ -96,32 +96,48 @@ public class CatalogController {
      * =================================================================
      * Notice we now expect the 6th column to be the AWS Image URL!
      */
-    @PostMapping(value = "/import/csv", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping("/import/csv")
     public ResponseEntity<String> importViaCsv(@RequestParam("file") MultipartFile file) {
-        int count = 0;
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
-            String line;
-            boolean isFirstLine = true;
-            
-            while ((line = reader.readLine()) != null) {
-                if (isFirstLine) { isFirstLine = false; continue; } // Skip header
-                
-                // Format: BaseSku,VariantSku,Attributes,Price,Stock,ImageURL
-                String[] data = line.split(",");
-                if (data.length >= 6) {
-                    // Update your service method to accept this 6th parameter: data[5].trim()
-                    catalogService.addVariantToProduct(
-                            data[0].trim(), data[1].trim(), data[2].trim(), 
-                            new BigDecimal(data[3].trim()), Integer.parseInt(data[4].trim())
-                    );
-                    count++;
-                }
-            }
+
+            long count = reader.lines()
+                    .skip(1) // Skip header
+                    .filter(line -> line != null && !line.trim().isEmpty())
+                    // Regex to split by comma but ignore commas inside quotes
+                    .map(line -> line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)"))
+                    .peek(data -> {
+                        // --- MAP THE 8 CSV COLUMNS ---
+                        String baseSku = data[0].trim();
+                        String baseName = data[1].trim();
+                        String baseDescription = data[2].trim();
+
+                        // Clean up quotes and create the Set of categories
+                        String categoryString = data[3].trim().replace("\"", "");
+                        Set<String> categorySlugs = Set.of(categoryString.split("\\s*,\\s*"));
+
+                        String variantSku = data[4].trim();
+                        String variantName = data[5].trim();
+                        BigDecimal price = new BigDecimal(data[6].trim());
+                        int stock = Integer.parseInt(data[7].trim());
+
+                        // --- STEP 1: Mimic Seeder Step 2 (Create Base Product) ---
+                        try {
+                            catalogService.createCompleteProduct(categorySlugs, baseSku, baseName, baseDescription);
+                        } catch (Exception e) {
+                            // Base product already exists from a previous row.
+                            // This is expected for multi-variant products! Proceed to Step 2.
+                        }
+
+                        // --- STEP 2: Mimic Seeder Step 3 (Add Variant) ---
+                        catalogService.addVariantToProduct(baseSku, variantSku, variantName, price, stock);
+                    })
+                    .count();
+
+            return ResponseEntity.ok("Successfully processed CSV. Added " + count + " variants.");
+
         } catch (Exception e) {
             log.error("Failed to parse CSV", e);
             return ResponseEntity.internalServerError().body("Failed to process CSV file.");
         }
-
-        return ResponseEntity.ok("Successfully processed CSV. Added " + count + " variants.");
     }
 }

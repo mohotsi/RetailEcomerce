@@ -17,6 +17,8 @@ public class Category {
 
     private String name; // e.g., "Spices"
     private String seoSlug; // e.g., "/pantry/seasonings/spices"
+    private String description;
+    private int displayOrder;
 
     // Self-Referencing Hierarchy: A Category can have a Parent Category
     @ManyToOne(fetch = FetchType.LAZY)
@@ -25,4 +27,7 @@ public class Category {
 
     @OneToMany(mappedBy = "parentCategory")
     private List<Category> subCategories;
+
+
+
 }
