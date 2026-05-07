@@ -8,6 +8,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import za.co.monate.retail.catalog.CategoryImportRow;
+import za.co.monate.retail.catalog.model.Category;
+import za.co.monate.retail.catalog.repository.CategoryRepository;
 import za.co.monate.retail.catalog.repository.ProductRepository;
 import za.co.monate.retail.catalog.service.CatalogService;
 
@@ -21,6 +23,7 @@ public class CategoriesController {
 
     private final CatalogService catalogService;
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
 
     @PostMapping("/import")
@@ -35,5 +38,18 @@ public class CategoriesController {
     public ResponseEntity<String> importCategoriesJson(@RequestBody List<CategoryImportRow> categories) {
         catalogService.processBulkCategoriesFromJson(categories);
         return ResponseEntity.ok("Taxonomy updated successfully from JSON payload");
+    }
+    /**
+     * =================================================================
+     * NAVIGATION MENU ENDPOINT
+     * =================================================================
+     * Returns a nested tree structure of all categories.
+     */
+    @GetMapping("/navigation")
+    public ResponseEntity<List<Category>> getNavigationMenu() {
+        // We only fetch the roots. Hibernate/JPA will automatically
+        // populate the 'subCategories' list for each root.
+        List<Category> tree = categoryRepository.findAllByParentCategoryIsNull();
+        return ResponseEntity.ok(tree);
     }
 }

@@ -1,5 +1,6 @@
 package za.co.monate.retail.catalog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -20,12 +21,14 @@ public class Category {
     private String description;
     private int displayOrder;
 
-    // Self-Referencing Hierarchy: A Category can have a Parent Category
+    // The existing link to the parent
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_category_id")
+    @JoinColumn(name = "parent_id")
+    @JsonIgnoreProperties("subCategories") // Prevents infinite recursion
     private Category parentCategory;
 
-    @OneToMany(mappedBy = "parentCategory")
+    // --- NEW: The link to the children ---
+    @OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL)
     private List<Category> subCategories;
 
 

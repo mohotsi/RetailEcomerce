@@ -2,6 +2,8 @@ package za.co.monate.retail.catalog.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,8 +17,10 @@ import za.co.monate.retail.catalog.repository.ProductRepository;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +29,27 @@ public class CatalogService {
 
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+    public Page<Product> getProductsByCategoryRecursive(String slug, Pageable pageable) {
+        // 1. Find the category the user clicked on
+        Category targetCategory = categoryRepository.findBySeoSlug(slug)
+                .orElseThrow(() -> new RuntimeException("Category not found: " + slug));
+
+        // 2. Start a list of IDs to search for
+        List<Long> categoryIds = new ArrayList<>();
+        categoryIds.add(targetCategory.getId());
+
+        // 3. Find all immediate children (e.g., if searching Groceries, find Beverages)
+        List<Category> children = categoryRepository.findByParentCategory_Id(targetCategory.getId());
+
+        // 4. Add children IDs to our search list
+        List<Long> childrenIds = children.stream()
+                .map(Category::getId)
+                .collect(Collectors.toList());
+        categoryIds.addAll(childrenIds);
+
+        // 5. Query the database for any product in ANY of these categories
+        return productRepository.findDistinctByCategories_IdIn(categoryIds, pageable);
+    }
 
     /**
      * @Transactional ensures ALL variants save successfully, or NONE of them do.

@@ -11,7 +11,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import za.co.monate.retail.catalog.dto.BulkProductImportRequest;
+import za.co.monate.retail.catalog.model.Category;
 import za.co.monate.retail.catalog.model.Product;
+import za.co.monate.retail.catalog.repository.CategoryRepository;
 import za.co.monate.retail.catalog.repository.ProductRepository;
 import za.co.monate.retail.catalog.service.CatalogService;
 
@@ -30,6 +32,7 @@ public class CatalogController {
     private final CatalogService catalogService;
     private final ProductRepository productRepository;
 
+
     /**
      * =================================================================
      * 1. THE STOREFRONT (READ WITH PAGINATION)
@@ -44,7 +47,7 @@ public class CatalogController {
             @RequestParam(defaultValue = "name") String sortBy
     ) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
-        // Spring Data JPA's findAll(Pageable) automatically runs a SQL COUNT() 
+        // Spring Data JPA's findAll(Pageable) automatically runs a SQL COUNT()
         // and a SQL LIMIT/OFFSET query for you!
         Page<Product> productPage = productRepository.findAll(pageable);
         return ResponseEntity.ok(productPage);
@@ -54,7 +57,7 @@ public class CatalogController {
      * =================================================================
      * METHOD A: MANUAL UI ENTRY (SINGLE PRODUCT)
      * =================================================================
-     * Used when a Merchandiser uses the Back Office web form to add 
+     * Used when a Merchandiser uses the Back Office web form to add
      * a single, highly custom item (like a custom bakery cake).
      */
     @PostMapping("/product")
@@ -73,7 +76,7 @@ public class CatalogController {
      * =================================================================
      * METHOD B: SYSTEM-TO-SYSTEM EDI (BULK JSON)
      * =================================================================
-     * Used by massive suppliers (Coca-Cola, Unilever). Their servers 
+     * Used by massive suppliers (Coca-Cola, Unilever). Their servers
      * call this endpoint at 2:00 AM automatically. No humans involved.
      */
     @PostMapping("/import/api")
@@ -140,4 +143,27 @@ public class CatalogController {
             return ResponseEntity.internalServerError().body("Failed to process CSV file.");
         }
     }
+
+    /**
+     * =================================================================
+     * 1b. CATEGORY NAVIGATION (FILTERED READ WITH PAGINATION)
+     * =================================================================
+     * Used for the category landing pages (e.g., Pantry, Beverages).
+     * Example URL: /api/v1/catalog/category/pantry?page=0&size=20
+     */
+    @GetMapping("/category/{slug}")
+    public ResponseEntity<Page<Product>> getProductsByCategory(
+            @PathVariable String slug,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "20") int size
+    ) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        // Use the new recursive service method
+        Page<Product> productPage = catalogService.getProductsByCategoryRecursive(slug, pageable);
+
+        return ResponseEntity.ok(productPage);
+    }
+
+
 }

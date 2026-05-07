@@ -47,7 +47,8 @@ public class SecurityConfiguration {
                                 hasAuthority("ROLE_SYSTEM_ADMIN")
                                 .requestMatchers(HttpMethod.DELETE, "/api/v1/categories/**")
                                 .hasAuthority("ROLE_SYSTEM_ADMIN")
-
+                                .requestMatchers(HttpMethod.GET, "/api/v1/categories/**")
+                                .permitAll()
 // --- MERCHANDISER & ADMIN: PRODUCT INGESTION ---
                                 .requestMatchers(HttpMethod.POST, "/api/v1/catalog/**").hasAnyAuthority("ROLE_MERCHANDISER", "ROLE_SYSTEM_ADMIN")
                                 // --- ROLE-RESTRICTED ENDPOINTS (Strict Access) ---
