@@ -1,0 +1,7 @@
+name,seoSlug,parentSlug,description,displayOrder
+All Products,all-products,,The complete wholesale catalog,1
+Beverages,beverages,all-products,Refreshing drinks juices and water,2
+Pantry & Groceries,pantry,all-products,Everyday pantry essentials and bulk staples,3
+Cleaning & Household,cleaning,all-products,Heavy duty cleaning supplies and detergents,4
+Personal Care,personal-care,all-products,Health beauty and hygiene products,5
+Snacks & Sweets,snacks,all-products,Chips chocolates and treats,6

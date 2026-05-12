@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import za.co.monate.retail.catalog.CategoryImportRow;
+import za.co.monate.retail.catalog.dto.CategorySummaryDto;
+import za.co.monate.retail.catalog.dto.ProductResponseDto;
+import za.co.monate.retail.catalog.dto.ProductVariantDto;
 import za.co.monate.retail.catalog.model.Category;
 import za.co.monate.retail.catalog.model.Product;
 import za.co.monate.retail.catalog.model.ProductVariant;
@@ -29,7 +32,47 @@ public class CatalogService {
 
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
-    public Page<Product> getProductsByCategoryRecursive(String slug, Pageable pageable) {
+    // Inside CatalogService.java
+
+    public ProductResponseDto mapToResponseDto(Product product) {
+        ProductResponseDto dto = new ProductResponseDto();
+        dto.setBaseSku(product.getBaseSku());
+        dto.setName(product.getName());
+        dto.setDescription(product.getDescription());
+        dto.setImageUrl(product.getImageUrl());
+
+        // 1. Map the Categories Summary
+        dto.setCategories(product.getCategories().stream().map(c -> {
+            CategorySummaryDto cDto = new CategorySummaryDto();
+            cDto.setId(c.getId());
+            cDto.setName(c.getName());
+            cDto.setSeoSlug(c.getSeoSlug());
+            return cDto;
+        }).collect(Collectors.toSet()));
+
+        // 2. Map the Variants using your EXACT entity fields
+        dto.setVariants(product.getVariants().stream().map(v -> {
+            ProductVariantDto vDto = new ProductVariantDto();
+            vDto.setSku(v.getSku());
+            vDto.setAttributeSummary(v.getAttributeSummary()); // FIXED
+            vDto.setPrice(v.getPrice());
+            vDto.setStockQuantity(v.getStockQuantity());     // FIXED
+            vDto.setImageUrl(v.getImageUrl());
+            return vDto;
+        }).collect(Collectors.toList()));
+
+        // 3. Simple B2B Deal Type logic for the Frontend badges
+        if (product.getDescription().contains("%")) {
+            dto.setDealType("PERCENTAGE");
+        } else if (product.getDescription().toLowerCase().contains("off")) {
+            dto.setDealType("FIXED");
+        } else {
+            dto.setDealType("NONE");
+        }
+
+        return dto;
+    }
+    public Page<ProductResponseDto> getProductsByCategoryRecursive(String slug, Pageable pageable) {
         // 1. Find the category the user clicked on
         Category targetCategory = categoryRepository.findBySeoSlug(slug)
                 .orElseThrow(() -> new RuntimeException("Category not found: " + slug));
@@ -48,7 +91,8 @@ public class CatalogService {
         categoryIds.addAll(childrenIds);
 
         // 5. Query the database for any product in ANY of these categories
-        return productRepository.findDistinctByCategories_IdIn(categoryIds, pageable);
+        return productRepository.findDistinctByCategories_IdIn(categoryIds, pageable)
+                .map(this::mapToResponseDto);
     }
 
     /**
@@ -210,6 +254,57 @@ public class CatalogService {
         } catch (Exception e) {
             log.error("❌ Failed to process category import", e);
             throw new RuntimeException("CSV processing failed: " + e.getMessage());
+        }
+    }
+
+
+    /**
+     * Reads the safe CSV, creates Base Products if they don't exist,
+     * and attaches Variants to them.
+     */
+    @Transactional
+    public void processBulkProductsImport(MultipartFile file) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
+            // Skip the header row
+            String line = reader.readLine();
+
+            while ((line = reader.readLine()) != null) {
+                // Smart split: splits by commas EXCEPT when the comma is inside quotes
+                String[] data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+
+                // Clean the data and remove any leftover CSV quotes
+                String baseSku = data[0].replace("\"", "").trim();
+                String productName = data[1].replace("\"", "").trim();
+                String productDescription = data[2].replace("\"", "").trim();
+
+                // The CSV has multiple categories separated by commas, so we split them into a Set
+                String categoriesStr = data[3].replace("\"", "").trim();
+                Set<String> categorySlugs = Set.of(categoriesStr.split("-,-")); // Update: Python saved them with a comma, let's just clean it
+
+                // Note: data[4] is dealType. We skip it here because your mapToResponseDto
+                // calculates it dynamically based on the description text!
+
+                String variantSku = data[5].replace("\"", "").trim();
+                String attributeSummary = data[6].replace("\"", "").trim();
+                BigDecimal price = new BigDecimal(data[7].replace("\"", "").trim());
+                int stockQuantity = Integer.parseInt(data[8].replace("\"", "").trim());
+
+                // 1. Check if the Base Product already exists in the DB
+                if (productRepository.findByBaseSku(baseSku).isEmpty()) {
+                    // Split the categories (e.g. "all-products,beverages" -> Set["all-products", "beverages"])
+                    Set<String> slugs = Set.of(categoriesStr.split(","));
+
+                    // Use your existing method to create the parent!
+                    createCompleteProduct(slugs, baseSku, productName, productDescription);
+                }
+
+                // 2. Add the physical variant to the parent product
+                addVariantToProduct(baseSku, variantSku, attributeSummary, price, stockQuantity);
+            }
+            log.info("✅ Bulk Product Import Completed Successfully.");
+        } catch (Exception e) {
+            log.error("❌ Failed to process product import", e);
+            throw new RuntimeException("Product CSV processing failed: " + e.getMessage());
         }
     }
 }

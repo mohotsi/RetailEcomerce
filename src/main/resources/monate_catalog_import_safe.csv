@@ -1,0 +1,90 @@
+baseSku,productName,productDescription,categories,dealType,variantSku,attributeSummary,price,stockQuantity
+COCA-754,Coca-Cola Original,Classic Coca-Cola refreshing drink.,"all-products,beverages",NONE,COCA-754-V1,300ml Can,29.83,125
+COCA-754,Coca-Cola Original,Classic Coca-Cola refreshing drink.,"all-products,beverages",NONE,COCA-754-V2,500ml Bottle,29.83,114
+COCA-754,Coca-Cola Original,Classic Coca-Cola refreshing drink.,"all-products,beverages",NONE,COCA-754-V3,2L Bottle,74.58,71
+COCA-754,Coca-Cola Original,Classic Coca-Cola refreshing drink.,"all-products,beverages",NONE,COCA-754-V4,Case 24x300ml,392.44,346
+COCA-754,Coca-Cola Original,Classic Coca-Cola refreshing drink.,"all-products,beverages",NONE,COCA-754-V5,Case 6x2L,393.31,279
+OROS189,Oros Orange Squash,Original orange flavored squash. 15% off standard price.,"all-products,beverages",PERCENTAGE,OROS189-V1,1L Bottle,15.6,111
+OROS189,Oros Orange Squash,Original orange flavored squash. 15% off standard price.,"all-products,beverages",PERCENTAGE,OROS189-V2,2L Bottle,38.99,119
+OROS189,Oros Orange Squash,Original orange flavored squash. 15% off standard price.,"all-products,beverages",PERCENTAGE,OROS189-V3,5L Bottle,70.18,258
+SPRIT716,Sprite Lemon-Lime,"Crisp, refreshing, and clean-tasting lemon and lime-flavored soft drink.","all-products,beverages",NONE,SPRIT716-V1,500ml Bottle,18.98,332
+SPRIT716,Sprite Lemon-Lime,"Crisp, refreshing, and clean-tasting lemon and lime-flavored soft drink.","all-products,beverages",NONE,SPRIT716-V2,2L Bottle,47.44,359
+SPRIT716,Sprite Lemon-Lime,"Crisp, refreshing, and clean-tasting lemon and lime-flavored soft drink.","all-products,beverages",NONE,SPRIT716-V3,Case 6x2L,224.2,112
+RED559,Red Bull Energy Drink,Vitalizes body and mind. 15% off standard price.,"all-products,beverages",PERCENTAGE,RED559-V1,250ml Can,30.18,81
+RED559,Red Bull Energy Drink,Vitalizes body and mind. 15% off standard price.,"all-products,beverages",PERCENTAGE,RED559-V2,Case 24x250ml,388.88,174
+LIQUI384,Liqui Fruit 100% Fruit Juice,No added sugar fruit juice.,"all-products,beverages",NONE,LIQUI384-V1,1L Carton,34.14,172
+LIQUI384,Liqui Fruit 100% Fruit Juice,No added sugar fruit juice.,"all-products,beverages",NONE,LIQUI384-V2,Case 12x1L,297.58,194
+AQUEL199,Aquellé Spring Water,Natural spring water.,"all-products,beverages",NONE,AQUEL199-V1,500ml,27.07,413
+AQUEL199,Aquellé Spring Water,Natural spring water.,"all-products,beverages",NONE,AQUEL199-V2,1.5L,121.84,22
+AQUEL199,Aquellé Spring Water,Natural spring water.,"all-products,beverages",NONE,AQUEL199-V3,5L,121.84,373
+AQUEL199,Aquellé Spring Water,Natural spring water.,"all-products,beverages",NONE,AQUEL199-V4,Case 24x500ml,303.67,63
+ACE487,Ace Super Maize Meal,Fortified super maize meal for the whole family.,"all-products,pantry",NONE,ACE487-V1,1kg Bag,30.86,321
+ACE487,Ace Super Maize Meal,Fortified super maize meal for the whole family.,"all-products,pantry",NONE,ACE487-V2,2.5kg Bag,77.16,316
+ACE487,Ace Super Maize Meal,Fortified super maize meal for the whole family.,"all-products,pantry",NONE,ACE487-V3,5kg Bag,138.89,453
+ACE487,Ace Super Maize Meal,Fortified super maize meal for the whole family.,"all-products,pantry",NONE,ACE487-V4,10kg Bag,262.34,441
+ACE487,Ace Super Maize Meal,Fortified super maize meal for the whole family.,"all-products,pantry",NONE,ACE487-V5,25kg Bag,138.89,185
+SELAT691,Selati White Sugar,Pure white cane sugar.,"all-products,pantry",NONE,SELAT691-V1,1kg Bag,26.39,338
+SELAT691,Selati White Sugar,Pure white cane sugar.,"all-products,pantry",NONE,SELAT691-V2,2.5kg Bag,65.98,116
+SELAT691,Selati White Sugar,Pure white cane sugar.,"all-products,pantry",NONE,SELAT691-V3,5kg Bag,118.76,395
+SELAT691,Selati White Sugar,Pure white cane sugar.,"all-products,pantry",NONE,SELAT691-V4,10kg Bag,224.32,148
+TASTI181,Tastic Parboiled Rice,Perfect every time parboiled rice.,"all-products,pantry",NONE,TASTI181-V1,1kg Bag,32.6,232
+TASTI181,Tastic Parboiled Rice,Perfect every time parboiled rice.,"all-products,pantry",NONE,TASTI181-V2,2kg Bag,32.6,325
+TASTI181,Tastic Parboiled Rice,Perfect every time parboiled rice.,"all-products,pantry",NONE,TASTI181-V3,5kg Bag,146.71,427
+TASTI181,Tastic Parboiled Rice,Perfect every time parboiled rice.,"all-products,pantry",NONE,TASTI181-V4,10kg Bag,277.12,186
+KOO266,Koo Baked Beans,Baked beans in tomato sauce.,"all-products,pantry",NONE,KOO266-V1,410g Tin,29.19,136
+KOO266,Koo Baked Beans,Baked beans in tomato sauce.,"all-products,pantry",NONE,KOO266-V2,Case 12x410g,376.92,349
+ALL763,All Gold Tomato Sauce,Thick and rich tomato sauce.,"all-products,pantry",NONE,ALL763-V1,700ml Bottle,37.7,273
+ALL763,All Gold Tomato Sauce,Thick and rich tomato sauce.,"all-products,pantry",NONE,ALL763-V2,Case 6x700ml,494.01,83
+ALL763,All Gold Tomato Sauce,Thick and rich tomato sauce.,"all-products,pantry",NONE,ALL763-V3,5L Catering Bucket,423.59,138
+FATTI755,Fatti's & Moni's Macaroni,Premium quality pasta. Buy in bulk and save!,"all-products,pantry",BUNDLE,FATTI755-V1,500g Pack,29.39,166
+FATTI755,Fatti's & Moni's Macaroni,Premium quality pasta. Buy in bulk and save!,"all-products,pantry",BUNDLE,FATTI755-V2,Case 20x500g,408.55,397
+NESCA157,Nescafé Gold Coffee,Rich and smooth instant coffee.,"all-products,pantry",NONE,NESCA157-V1,100g Jar,41.1,205
+NESCA157,Nescafé Gold Coffee,Rich and smooth instant coffee.,"all-products,pantry",NONE,NESCA157-V2,200g Jar,41.1,137
+FIVE167,Five Roses Tea Bags,Premium quality Ceylon blend tea.,"all-products,pantry",NONE,FIVE167-V1,100 Tagless Bags,42.53,161
+FIVE167,Five Roses Tea Bags,Premium quality Ceylon blend tea.,"all-products,pantry",NONE,FIVE167-V2,200 Tagless Bags,42.53,108
+FIVE167,Five Roses Tea Bags,Premium quality Ceylon blend tea.,"all-products,pantry",NONE,FIVE167-V3,Case 10x200 Bags,535.34,202
+BOKOM758,Bokomo Weet-Bix,Whole wheat breakfast cereal. Fixed discount applied on checkout.,"all-products,pantry",FIXED,BOKOM758-V1,450g Box,294.69,287
+BOKOM758,Bokomo Weet-Bix,Whole wheat breakfast cereal. Fixed discount applied on checkout.,"all-products,pantry",FIXED,BOKOM758-V2,900g Box,356.69,382
+BOKOM758,Bokomo Weet-Bix,Whole wheat breakfast cereal. Fixed discount applied on checkout.,"all-products,pantry",FIXED,BOKOM758-V3,Case 12x900g,366.36,459
+SUNLI697,Sunlight Liquid,Dishwashing liquid with real lemon juice. Fixed discount applied on checkout.,"all-products,cleaning",FIXED,SUNLI697-V1,400ml Bottle,39.39,70
+SUNLI697,Sunlight Liquid,Dishwashing liquid with real lemon juice. Fixed discount applied on checkout.,"all-products,cleaning",FIXED,SUNLI697-V2,750ml Bottle,39.39,260
+SUNLI697,Sunlight Liquid,Dishwashing liquid with real lemon juice. Fixed discount applied on checkout.,"all-products,cleaning",FIXED,SUNLI697-V3,1.5L Pouch,177.24,252
+SUNLI697,Sunlight Liquid,Dishwashing liquid with real lemon juice. Fixed discount applied on checkout.,"all-products,cleaning",FIXED,SUNLI697-V4,5L Catering Size,177.24,46
+ARIEL873,Ariel Auto Washing Powder,Tough stain removal in one wash.,"all-products,cleaning",NONE,ARIEL873-V1,1kg Bag,38.06,81
+ARIEL873,Ariel Auto Washing Powder,Tough stain removal in one wash.,"all-products,cleaning",NONE,ARIEL873-V2,2kg Bag,38.06,405
+ARIEL873,Ariel Auto Washing Powder,Tough stain removal in one wash.,"all-products,cleaning",NONE,ARIEL873-V3,4kg Bag,38.06,348
+HANDY532,Handy Andy Cream,Multipurpose cleaning cream with microcrystals. 10% off standard price.,"all-products,cleaning",PERCENTAGE,HANDY532-V1,500ml Bottle,42.63,239
+HANDY532,Handy Andy Cream,Multipurpose cleaning cream with microcrystals. 10% off standard price.,"all-products,cleaning",PERCENTAGE,HANDY532-V2,750ml Bottle,42.63,270
+DOMES357,Domestos Thick Bleach,Extended germ kill. 10% off standard price.,"all-products,cleaning",PERCENTAGE,DOMES357-V1,750ml Bottle,49.41,349
+DOMES357,Domestos Thick Bleach,Extended germ kill. 10% off standard price.,"all-products,cleaning",PERCENTAGE,DOMES357-V2,3L Bottle,123.54,453
+DOMES357,Domestos Thick Bleach,Extended germ kill. 10% off standard price.,"all-products,cleaning",PERCENTAGE,DOMES357-V3,Case 6x750ml,581.05,136
+OMO887,Omo Auto Liquid,Fast action liquid detergent. Buy in bulk and save!,"all-products,cleaning",BUNDLE,OMO887-V1,1.5L Bottle,167.54,222
+OMO887,Omo Auto Liquid,Fast action liquid detergent. Buy in bulk and save!,"all-products,cleaning",BUNDLE,OMO887-V2,3L Bottle,93.08,80
+COLGA564,Colgate Double Action,Fluoride toothpaste.,"all-products,personal-care",NONE,COLGA564-V1,50ml Tube,57.52,134
+COLGA564,Colgate Double Action,Fluoride toothpaste.,"all-products,personal-care",NONE,COLGA564-V2,100ml Tube,57.52,497
+COLGA564,Colgate Double Action,Fluoride toothpaste.,"all-products,personal-care",NONE,COLGA564-V3,Case 12x100ml,661.68,91
+PROTE619,Protex Bath Soap,Antibacterial bath soap.,"all-products,personal-care",NONE,PROTE619-V1,150g Bar,45.97,327
+PROTE619,Protex Bath Soap,Antibacterial bath soap.,"all-products,personal-care",NONE,PROTE619-V2,Pack of 4x150g,45.97,259
+PROTE619,Protex Bath Soap,Antibacterial bath soap.,"all-products,personal-care",NONE,PROTE619-V3,Case 48x150g,563.71,78
+PAMPE482,Pampers Active Baby,Dry diapers for active babies.,"all-products,personal-care",NONE,PAMPE482-V1,Size 3 (58s),59.07,472
+PAMPE482,Pampers Active Baby,Dry diapers for active babies.,"all-products,personal-care",NONE,PAMPE482-V2,Size 4 (50s),59.07,271
+PAMPE482,Pampers Active Baby,Dry diapers for active babies.,"all-products,personal-care",NONE,PAMPE482-V3,Size 5 (44s),59.07,470
+PAMPE482,Pampers Active Baby,Dry diapers for active babies.,"all-products,personal-care",NONE,PAMPE482-V4,Jumbo Pack Size 4 (100s),472.8,165
+NIVEA600,Nivea Body Lotion,Deep moisture body lotion.,"all-products,personal-care",NONE,NIVEA600-V1,400ml Bottle,58.58,449
+NIVEA600,Nivea Body Lotion,Deep moisture body lotion.,"all-products,personal-care",NONE,NIVEA600-V2,625ml Pump,58.58,425
+SHIEL926,Shield Roll-On,Anti-perspirant deodorant.,"all-products,personal-care",NONE,SHIEL926-V1,50ml Mens,41.16,449
+SHIEL926,Shield Roll-On,Anti-perspirant deodorant.,"all-products,personal-care",NONE,SHIEL926-V2,50ml Womens,41.16,290
+SHIEL926,Shield Roll-On,Anti-perspirant deodorant.,"all-products,personal-care",NONE,SHIEL926-V3,Case 6x50ml,602.09,43
+SIMBA849,Simba Potato Chips,Roarrrs with flavor potato chips. Fixed discount applied on checkout.,"all-products,snacks",FIXED,SIMBA849-V1,36g Packet,31.56,272
+SIMBA849,Simba Potato Chips,Roarrrs with flavor potato chips. Fixed discount applied on checkout.,"all-products,snacks",FIXED,SIMBA849-V2,120g Packet,31.56,392
+SIMBA849,Simba Potato Chips,Roarrrs with flavor potato chips. Fixed discount applied on checkout.,"all-products,snacks",FIXED,SIMBA849-V3,Case 48x36g,280.26,337
+DORIT586,Doritos Corn Chips,"Bold crunch, bold flavor. 10% off standard price.","all-products,snacks",PERCENTAGE,DORIT586-V1,145g Packet,22.55,310
+DORIT586,Doritos Corn Chips,"Bold crunch, bold flavor. 10% off standard price.","all-products,snacks",PERCENTAGE,DORIT586-V2,Case 24x145g,247.23,108
+CADBU652,Cadbury Dairy Milk,Classic milk chocolate slab. Buy in bulk and save!,"all-products,snacks",BUNDLE,CADBU652-V1,80g Slab,16.02,159
+CADBU652,Cadbury Dairy Milk,Classic milk chocolate slab. Buy in bulk and save!,"all-products,snacks",BUNDLE,CADBU652-V2,150g Slab,16.02,204
+CADBU652,Cadbury Dairy Milk,Classic milk chocolate slab. Buy in bulk and save!,"all-products,snacks",BUNDLE,CADBU652-V3,Case 24x80g,239.8,332
+BEACO482,Beacon Jelly Tots,Original fruit flavored jelly treats. Fixed discount applied on checkout.,"all-products,snacks",FIXED,BEACO482-V1,40g Packet,21.03,126
+BEACO482,Beacon Jelly Tots,Original fruit flavored jelly treats. Fixed discount applied on checkout.,"all-products,snacks",FIXED,BEACO482-V2,100g Packet,21.03,115
+BEACO482,Beacon Jelly Tots,Original fruit flavored jelly treats. Fixed discount applied on checkout.,"all-products,snacks",FIXED,BEACO482-V3,Box 40x40g,177.66,10
+OUMA702,Ouma Rusks,Dip 'n Ouma buttermilk rusks. 10% off standard price.,"all-products,snacks",PERCENTAGE,OUMA702-V1,500g Box,139.39,323
+OUMA702,Ouma Rusks,Dip 'n Ouma buttermilk rusks. 10% off standard price.,"all-products,snacks",PERCENTAGE,OUMA702-V2,Case 12x500g,138.0,34

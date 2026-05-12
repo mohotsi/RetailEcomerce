@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import za.co.monate.retail.catalog.dto.BulkProductImportRequest;
+import za.co.monate.retail.catalog.dto.ProductResponseDto;
 import za.co.monate.retail.catalog.model.Category;
 import za.co.monate.retail.catalog.model.Product;
 import za.co.monate.retail.catalog.repository.CategoryRepository;
@@ -32,7 +33,15 @@ public class CatalogController {
     private final CatalogService catalogService;
     private final ProductRepository productRepository;
 
-
+    @PostMapping(value = "/import/products", consumes = "multipart/form-data")
+    public ResponseEntity<String> importProducts(@RequestParam("file") MultipartFile file) {
+        try {
+            catalogService.processBulkProductsImport(file);
+            return ResponseEntity.ok("Product Catalog successfully imported!");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Import failed: " + e.getMessage());
+        }
+    }
     /**
      * =================================================================
      * 1. THE STOREFRONT (READ WITH PAGINATION)
@@ -41,7 +50,7 @@ public class CatalogController {
      * Example URL: /api/v1/catalog/products?page=0&size=20&sortBy=name
      */
     @GetMapping("/products")
-    public ResponseEntity<Page<Product>> getProductsPaginated(
+    public ResponseEntity<Page<ProductResponseDto>> getProductsPaginated(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size,
             @RequestParam(defaultValue = "name") String sortBy
@@ -49,7 +58,8 @@ public class CatalogController {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
         // Spring Data JPA's findAll(Pageable) automatically runs a SQL COUNT()
         // and a SQL LIMIT/OFFSET query for you!
-        Page<Product> productPage = productRepository.findAll(pageable);
+        Page<ProductResponseDto> productPage = productRepository.findAll(pageable)
+                .map(catalogService::mapToResponseDto);
         return ResponseEntity.ok(productPage);
     }
 
@@ -118,6 +128,7 @@ public class CatalogController {
                         String categoryString = data[3].trim().replace("\"", "");
                         Set<String> categorySlugs = Set.of(categoryString.split("\\s*,\\s*"));
 
+
                         String variantSku = data[4].trim();
                         String variantName = data[5].trim();
                         BigDecimal price = new BigDecimal(data[6].trim());
@@ -152,7 +163,7 @@ public class CatalogController {
      * Example URL: /api/v1/catalog/category/pantry?page=0&size=20
      */
     @GetMapping("/category/{slug}")
-    public ResponseEntity<Page<Product>> getProductsByCategory(
+    public ResponseEntity<Page<ProductResponseDto>> getProductsByCategory(
             @PathVariable String slug,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size
@@ -160,7 +171,7 @@ public class CatalogController {
         Pageable pageable = PageRequest.of(page, size);
 
         // Use the new recursive service method
-        Page<Product> productPage = catalogService.getProductsByCategoryRecursive(slug, pageable);
+        Page<ProductResponseDto> productPage = catalogService.getProductsByCategoryRecursive(slug, pageable);
 
         return ResponseEntity.ok(productPage);
     }
