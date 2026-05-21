@@ -1,0 +1,14 @@
+name,seoSlug,parentSlug
+Groceries,groceries,
+Beverages,groceries-beverages,groceries
+Snacks,groceries-snacks,groceries
+Pantry,groceries-pantry,groceries
+Electronics,electronics,
+Audio,electronics-audio,electronics
+Accessories,electronics-accessories,electronics
+Clothing,clothing,
+Mens,clothing-mens,clothing
+Womens,clothing-womens,clothing
+Home & Garden,home-garden,
+Cleaning,home-garden-cleaning,home-garden
+Decor,home-garden-decor,home-garden
