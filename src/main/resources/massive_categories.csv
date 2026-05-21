@@ -1,0 +1,32 @@
+name,seoSlug,parentSlug
+All Products,all-products,
+Groceries,groceries,all-products
+Pantry,groceries-pantry,groceries
+Beverages,groceries-beverages,groceries
+Snacks,groceries-snacks,groceries
+Canned Goods,groceries-canned-goods,groceries
+Baking,groceries-baking,groceries
+Electronics,electronics,all-products
+Cables,electronics-cables,electronics
+Audio,electronics-audio,electronics
+Peripherals,electronics-peripherals,electronics
+Accessories,electronics-accessories,electronics
+Power,electronics-power,electronics
+Clothing,clothing,all-products
+Mens,clothing-mens,clothing
+Womens,clothing-womens,clothing
+Kids,clothing-kids,clothing
+Activewear,clothing-activewear,clothing
+Winter,clothing-winter,clothing
+Home & Garden,home-and-garden,all-products
+Cleaning,home-and-garden-cleaning,home-and-garden
+Decor,home-and-garden-decor,home-and-garden
+Gardening,home-and-garden-gardening,home-and-garden
+Lighting,home-and-garden-lighting,home-and-garden
+Bedding,home-and-garden-bedding,home-and-garden
+Health & Beauty,health-and-beauty,all-products
+Hair Care,health-and-beauty-hair-care,health-and-beauty
+Oral Care,health-and-beauty-oral-care,health-and-beauty
+Skincare,health-and-beauty-skincare,health-and-beauty
+Bath,health-and-beauty-bath,health-and-beauty
+Vitamins,health-and-beauty-vitamins,health-and-beauty

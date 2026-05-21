@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import za.co.monate.retail.catalog.CategoryImportRow;
+import za.co.monate.retail.catalog.dto.CategoryNodeDto;
 import za.co.monate.retail.catalog.dto.CategorySummaryDto;
 import za.co.monate.retail.catalog.model.Category;
 import za.co.monate.retail.catalog.repository.CategoryRepository;
@@ -66,5 +67,9 @@ public class CategoriesController {
 
                         ).collect(Collectors.toUnmodifiableList());
         return ResponseEntity.ok(tree);
+    }
+    @GetMapping("/navigationTree")
+    public ResponseEntity<List<CategoryNodeDto>> getNavigationTree() {
+        return ResponseEntity.ok(catalogService.getNavigationTree());
     }
 }

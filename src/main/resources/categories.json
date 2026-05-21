@@ -1,0 +1,107 @@
+[
+  {
+    "name": "All Products",
+    "seoSlug": "all-products",
+    "parentSlug": "",
+    "description": "The root catalog for Monate Retail",
+    "displayOrder": 1
+  },
+  {
+    "name": "Pantry & Groceries",
+    "seoSlug": "pantry",
+    "parentSlug": "all-products",
+    "description": "Everyday pantry essentials",
+    "displayOrder": 2
+  },
+  {
+    "name": "Beverages",
+    "seoSlug": "beverages",
+    "parentSlug": "all-products",
+    "description": "Refreshing drinks and juices",
+    "displayOrder": 3
+  },
+  {
+    "name": "Cleaning & Household",
+    "seoSlug": "cleaning",
+    "parentSlug": "all-products",
+    "description": "Detergents and cleaning tools",
+    "displayOrder": 4
+  },
+  {
+    "name": "Personal Care",
+    "seoSlug": "personal-care",
+    "parentSlug": "all-products",
+    "description": "Hygiene and grooming",
+    "displayOrder": 5
+  },
+  {
+    "name": "Baking Supplies",
+    "seoSlug": "baking",
+    "parentSlug": "pantry",
+    "description": "Flour, sugar, and baking powder",
+    "displayOrder": 6
+  },
+  {
+    "name": "Canned Goods",
+    "seoSlug": "canned-goods",
+    "parentSlug": "pantry",
+    "description": "Beans, tomatoes, and canned meals",
+    "displayOrder": 7
+  },
+  {
+    "name": "Spices & Seasonings",
+    "seoSlug": "spices",
+    "parentSlug": "pantry",
+    "description": "Salt, pepper, and mixed spices",
+    "displayOrder": 8
+  },
+  {
+    "name": "Fizzy Drinks",
+    "seoSlug": "fizzy-drinks",
+    "parentSlug": "beverages",
+    "description": "Carbonated sodas and energy drinks",
+    "displayOrder": 9
+  },
+  {
+    "name": "Juices & Water",
+    "seoSlug": "juices-water",
+    "parentSlug": "beverages",
+    "description": "Fruit juices and bottled water",
+    "displayOrder": 10
+  },
+  {
+    "name": "Hot Beverages",
+    "seoSlug": "hot-beverages",
+    "parentSlug": "beverages",
+    "description": "Tea, coffee, and hot chocolate",
+    "displayOrder": 11
+  },
+  {
+    "name": "Laundry",
+    "seoSlug": "laundry",
+    "parentSlug": "cleaning",
+    "description": "Washing powders and fabric softeners",
+    "displayOrder": 12
+  },
+  {
+    "name": "Surface Cleaners",
+    "seoSlug": "surface-cleaners",
+    "parentSlug": "cleaning",
+    "description": "Bleach and multi-purpose cleaners",
+    "displayOrder": 13
+  },
+  {
+    "name": "Hair Care",
+    "seoSlug": "hair-care",
+    "parentSlug": "personal-care",
+    "description": "Shampoo and conditioners",
+    "displayOrder": 14
+  },
+  {
+    "name": "Oral Hygiene",
+    "seoSlug": "oral-hygiene",
+    "parentSlug": "personal-care",
+    "description": "Toothpaste and toothbrushes",
+    "displayOrder": 15
+  }
+]
