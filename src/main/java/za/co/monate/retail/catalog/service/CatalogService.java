@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import za.co.monate.retail.catalog.CategoryImportRow;
-import za.co.monate.retail.catalog.dto.CategorySummaryDto;
-import za.co.monate.retail.catalog.dto.ProductResponseDto;
-import za.co.monate.retail.catalog.dto.ProductVariantDto;
+import za.co.monate.retail.catalog.dto.*;
 import za.co.monate.retail.catalog.model.Category;
 import za.co.monate.retail.catalog.model.Product;
 import za.co.monate.retail.catalog.model.ProductVariant;
@@ -33,6 +31,74 @@ public class CatalogService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     // Inside CatalogService.java
+
+
+
+// ... (Make sure this is inside your CatalogService class)
+
+    /**
+     * MAIN PIPELINE: Receives the JSON list and processes it safely.
+     */
+    @Transactional
+    public void processBulkCategoriesFromJson(List<CategoryImportRow> rows) {
+        // 1. First line of defense: Never process an empty request.
+        if (rows == null || rows.isEmpty()) {
+            throw new IllegalArgumentException("JSON payload cannot be empty");
+        }
+
+        try {
+            // 2. The Stream Pipeline
+            // It takes the raw JSON list, runs each item through our helper method below,
+            // and then saves the result to the database.
+            rows.stream()
+                    .map(this::mapToCategoryEntity)
+                    .forEach(categoryRepository::save);
+
+            log.info("✅ Bulk JSON Category Import Completed. Processed {} records.", rows.size());
+
+        } catch (Exception e) {
+            log.error("❌ Failed to process JSON category import", e);
+            throw new RuntimeException("JSON processing failed: " + e.getMessage());
+        }
+    }
+
+    /**
+     * THE HELPER METHOD: This is where the Existence Check actually lives!
+     */
+    private Category mapToCategoryEntity(CategoryImportRow row) {
+
+        // --- THE EXISTENCE CHECK (UPSERT) ---
+        // We ask the database: "Do you already have a category with this exact SEO slug?"
+        // If YES -> It grabs the existing category so we can just update it.
+        // If NO  -> The '.orElseGet' kicks in and creates a brand new, empty Category object.
+        Category category = categoryRepository.findBySeoSlug(row.getSeoSlug())
+                .orElseGet(Category::new);
+
+        // --- UPDATE FIELDS ---
+        // Because of the check above, we are either filling out a brand new form,
+        // or just erasing and re-writing the values on an existing form.
+        category.setName(row.getName());
+        category.setSeoSlug(row.getSeoSlug());
+        category.setDescription(row.getDescription());
+
+        // --- NESTING/PARENT LOGIC ---
+        // We check if the JSON gave us a parent slug (like "beverages")
+        String parentSlug = row.getParentSlug();
+        if (parentSlug != null && !parentSlug.trim().isEmpty()) {
+
+            // We search the database for that parent...
+            categoryRepository.findBySeoSlug(parentSlug.trim()).ifPresentOrElse(
+                    // If we find it, link it!
+                    parent -> category.setParentCategory(parent),
+
+                    // If we don't find it, log a warning so the developer knows the JSON had a typo.
+                    () -> log.warn("⚠️ Parent category '{}' not found for child '{}'", parentSlug, row.getSeoSlug())
+            );
+        }
+
+        // We hand the fully built (or fully updated) object back to the stream pipeline to be saved.
+        return category;
+    }
 
     public ProductResponseDto mapToResponseDto(Product product) {
         ProductResponseDto dto = new ProductResponseDto();
@@ -168,53 +234,24 @@ public class CatalogService {
             categoryRepository.save(category);
         }
     }
-    @Transactional
-    public void processBulkCategoriesFromJson(List<CategoryImportRow> rows) {
-        if (rows == null || rows.isEmpty()) {
-            throw new IllegalArgumentException("JSON payload cannot be empty");
-        }
 
-        try {
-            // The Stream Pipeline
-            rows.stream()
-                    .map(this::mapToCategoryEntity)
-                    .forEach(categoryRepository::save);
 
-            log.info("✅ Bulk JSON Category Import Completed. Processed {} records.", rows.size());
-        } catch (Exception e) {
-            log.error("❌ Failed to process JSON category import", e);
-            throw new RuntimeException("JSON processing failed: " + e.getMessage());
-        }
-    }
 
-    /**
-     * Helper method to map DTOs to Entities and handle DB lookups.
-     */
-    private Category mapToCategoryEntity(CategoryImportRow row) {
-        // 1. Find existing or create new.
-        // Using orElseGet(Category::new) is more efficient than orElse(new Category())
-        Category category = categoryRepository.findBySeoSlug(row.getSeoSlug())
-                .orElseGet(Category::new);
 
-        category.setName(row.getName());
-        category.setSeoSlug(row.getSeoSlug());
-        category.setDescription(row.getDescription());
 
-        // Handle null displayOrder safely
-        if (row.getDisplayOrder() != null) {
-            category.setDisplayOrder(row.getDisplayOrder());
-        }
 
-        // 2. Handle Parent Linking
-        if (row.getParentSlug() != null && !row.getParentSlug().isEmpty()) {
-            categoryRepository.findBySeoSlug(row.getParentSlug()).ifPresentOrElse(
-                    category::setParentCategory,
-                    () -> log.warn("⚠️ Parent category {} not found for child {}", row.getParentSlug(), row.getSeoSlug())
-            );
-        }
 
-        return category;
-    }
+
+
+
+
+
+
+
+
+
+
+
 
     public void processBulkCategoriesImport(MultipartFile file) {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
@@ -284,10 +321,10 @@ public class CatalogService {
                 // Note: data[4] is dealType. We skip it here because your mapToResponseDto
                 // calculates it dynamically based on the description text!
 
-                String variantSku = data[5].replace("\"", "").trim();
-                String attributeSummary = data[6].replace("\"", "").trim();
-                BigDecimal price = new BigDecimal(data[7].replace("\"", "").trim());
-                int stockQuantity = Integer.parseInt(data[8].replace("\"", "").trim());
+                String variantSku = data[4].replace("\"", "").trim();
+                String attributeSummary = data[5].replace("\"", "").trim();
+                BigDecimal price = new BigDecimal(data[6].replace("\"", "").trim());
+                int stockQuantity = Integer.parseInt(data[7].replace("\"", "").trim());
 
                 // 1. Check if the Base Product already exists in the DB
                 if (productRepository.findByBaseSku(baseSku).isEmpty()) {
@@ -306,5 +343,61 @@ public class CatalogService {
             log.error("❌ Failed to process product import", e);
             throw new RuntimeException("Product CSV processing failed: " + e.getMessage());
         }
+    }
+
+    public void processBulkProductsFromJson(List<ProductImportDto> payload) {
+        for (ProductImportDto dto : payload) {
+
+            // 1. Check if the Base Product exists. If not, create it.
+            if (productRepository.findByBaseSku(dto.getBaseSku()).isEmpty()) {
+                createCompleteProduct(
+                        dto.getCategories(),
+                        dto.getBaseSku(),
+                        dto.getProductName(),
+                        dto.getProductDescription()
+                );
+            }
+
+            // 2. Attach the physical variant to the base product
+            addVariantToProduct(
+                    dto.getBaseSku(),
+                    dto.getVariantSku(),
+                    dto.getAttributeSummary(),
+                    dto.getPrice(),
+                    dto.getStockQuantity()
+            );
+        }
+        log.info("✅ Bulk JSON Product Import Completed. Processed {} records.", payload.size());
+    }
+    // Import this at the top if you haven't:
+// import java.util.stream.Collectors;
+
+    // 1. The main method called by the Controller
+    public List<CategoryNodeDto> getNavigationTree() {
+        // Fetch only the categories that have NO parent (the top level)
+        List<Category> rootCategories = categoryRepository.findAllByParentCategoryIsNull();
+
+        // Convert them into our clean DTO tree
+        return rootCategories.stream()
+                .map(this::mapToCategoryNode)
+                .collect(Collectors.toList());
+    }
+
+    // 2. The recursive helper method
+    private CategoryNodeDto mapToCategoryNode(Category category) {
+        CategoryNodeDto node = new CategoryNodeDto();
+        node.setName(category.getName());
+        node.setSeoSlug(category.getSeoSlug());
+
+        // RECURSION: We loop through the database children, and call THIS SAME METHOD
+        // to map them into DTOs. This goes as deep as your tree goes!
+        if (category.getSubCategories() != null) {
+            List<CategoryNodeDto> children = category.getSubCategories().stream()
+                    .map(this::mapToCategoryNode)
+                    .collect(Collectors.toList());
+            node.setSubCategories(children);
+        }
+
+        return node;
     }
 }

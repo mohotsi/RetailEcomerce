@@ -1,0 +1,520 @@
+[
+  {
+    "baseSku": "SNOWFLAKE",
+    "productName": "Snowflake Cake Wheat Flour",
+    "productDescription": "Premium white cake wheat flour. Perfect for baking.",
+    "categories": [
+      "all-products",
+      "pantry",
+      "baking"
+    ],
+    "variantSku": "SNOWFLAKE-V1",
+    "attributeSummary": "2.5kg Bag",
+    "price": 38.99,
+    "stockQuantity": 31
+  },
+  {
+    "baseSku": "SNOWFLAKE",
+    "productName": "Snowflake Cake Wheat Flour",
+    "productDescription": "Premium white cake wheat flour. Perfect for baking.",
+    "categories": [
+      "all-products",
+      "pantry",
+      "baking"
+    ],
+    "variantSku": "SNOWFLAKE-V2",
+    "attributeSummary": "10kg Bulk Bag",
+    "price": 145.0,
+    "stockQuantity": 184
+  },
+  {
+    "baseSku": "SELATI",
+    "productName": "Selati White Sugar",
+    "productDescription": "Pure white cane sugar.",
+    "categories": [
+      "all-products",
+      "pantry",
+      "baking"
+    ],
+    "variantSku": "SELATI-V1",
+    "attributeSummary": "1kg Bag",
+    "price": 22.5,
+    "stockQuantity": 51
+  },
+  {
+    "baseSku": "SELATI",
+    "productName": "Selati White Sugar",
+    "productDescription": "Pure white cane sugar.",
+    "categories": [
+      "all-products",
+      "pantry",
+      "baking"
+    ],
+    "variantSku": "SELATI-V2",
+    "attributeSummary": "2.5kg Bag",
+    "price": 54.0,
+    "stockQuantity": 278
+  },
+  {
+    "baseSku": "SELATI",
+    "productName": "Selati White Sugar",
+    "productDescription": "Pure white cane sugar.",
+    "categories": [
+      "all-products",
+      "pantry",
+      "baking"
+    ],
+    "variantSku": "SELATI-V3",
+    "attributeSummary": "10kg Bag",
+    "price": 210.0,
+    "stockQuantity": 136
+  },
+  {
+    "baseSku": "KOO",
+    "productName": "Koo Baked Beans in Tomato Sauce",
+    "productDescription": "South Africa's favorite baked beans.",
+    "categories": [
+      "all-products",
+      "pantry",
+      "canned-goods"
+    ],
+    "variantSku": "KOO-V1",
+    "attributeSummary": "410g Tin",
+    "price": 18.99,
+    "stockQuantity": 157
+  },
+  {
+    "baseSku": "KOO",
+    "productName": "Koo Baked Beans in Tomato Sauce",
+    "productDescription": "South Africa's favorite baked beans.",
+    "categories": [
+      "all-products",
+      "pantry",
+      "canned-goods"
+    ],
+    "variantSku": "KOO-V2",
+    "attributeSummary": "Case 12x410g",
+    "price": 215.0,
+    "stockQuantity": 263
+  },
+  {
+    "baseSku": "ALLGOLD",
+    "productName": "All Gold Tomato Sauce",
+    "productDescription": "Thick and rich tomato sauce.",
+    "categories": [
+      "all-products",
+      "pantry",
+      "canned-goods"
+    ],
+    "variantSku": "ALLGOLD-V1",
+    "attributeSummary": "700ml Bottle",
+    "price": 35.0,
+    "stockQuantity": 124
+  },
+  {
+    "baseSku": "ALLGOLD",
+    "productName": "All Gold Tomato Sauce",
+    "productDescription": "Thick and rich tomato sauce.",
+    "categories": [
+      "all-products",
+      "pantry",
+      "canned-goods"
+    ],
+    "variantSku": "ALLGOLD-V2",
+    "attributeSummary": "5L Catering Jug",
+    "price": 195.0,
+    "stockQuantity": 291
+  },
+  {
+    "baseSku": "ROBERTS",
+    "productName": "Robertson's Chicken Spice",
+    "productDescription": "Perfect blend for roasted or grilled chicken.",
+    "categories": [
+      "all-products",
+      "pantry",
+      "spices"
+    ],
+    "variantSku": "ROBERTS-V1",
+    "attributeSummary": "100g Shaker",
+    "price": 25.5,
+    "stockQuantity": 82
+  },
+  {
+    "baseSku": "ROBERTS",
+    "productName": "Robertson's Chicken Spice",
+    "productDescription": "Perfect blend for roasted or grilled chicken.",
+    "categories": [
+      "all-products",
+      "pantry",
+      "spices"
+    ],
+    "variantSku": "ROBERTS-V2",
+    "attributeSummary": "1kg Catering Tub",
+    "price": 180.0,
+    "stockQuantity": 257
+  },
+  {
+    "baseSku": "COCA",
+    "productName": "Coca-Cola Original Taste",
+    "productDescription": "Classic refreshing cola.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "fizzy-drinks"
+    ],
+    "variantSku": "COCA-V1",
+    "attributeSummary": "300ml Can",
+    "price": 12.0,
+    "stockQuantity": 139
+  },
+  {
+    "baseSku": "COCA",
+    "productName": "Coca-Cola Original Taste",
+    "productDescription": "Classic refreshing cola.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "fizzy-drinks"
+    ],
+    "variantSku": "COCA-V2",
+    "attributeSummary": "2L Bottle",
+    "price": 24.5,
+    "stockQuantity": 257
+  },
+  {
+    "baseSku": "COCA",
+    "productName": "Coca-Cola Original Taste",
+    "productDescription": "Classic refreshing cola.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "fizzy-drinks"
+    ],
+    "variantSku": "COCA-V3",
+    "attributeSummary": "Case 6x2L",
+    "price": 140.0,
+    "stockQuantity": 223
+  },
+  {
+    "baseSku": "SPRITE",
+    "productName": "Sprite Lemon-Lime",
+    "productDescription": "Crisp, clean-tasting lemon and lime-flavored soft drink.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "fizzy-drinks"
+    ],
+    "variantSku": "SPRITE-V1",
+    "attributeSummary": "2L Bottle",
+    "price": 23.0,
+    "stockQuantity": 112
+  },
+  {
+    "baseSku": "SPRITE",
+    "productName": "Sprite Lemon-Lime",
+    "productDescription": "Crisp, clean-tasting lemon and lime-flavored soft drink.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "fizzy-drinks"
+    ],
+    "variantSku": "SPRITE-V2",
+    "attributeSummary": "Case 6x2L",
+    "price": 135.0,
+    "stockQuantity": 63
+  },
+  {
+    "baseSku": "OROS",
+    "productName": "Oros Original Orange Squash",
+    "productDescription": "The classic South African orange squash. 15% off standard price.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "juices-water"
+    ],
+    "variantSku": "OROS-V1",
+    "attributeSummary": "2L Bottle",
+    "price": 42.5,
+    "stockQuantity": 64
+  },
+  {
+    "baseSku": "OROS",
+    "productName": "Oros Original Orange Squash",
+    "productDescription": "The classic South African orange squash. 15% off standard price.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "juices-water"
+    ],
+    "variantSku": "OROS-V2",
+    "attributeSummary": "5L Catering Jug",
+    "price": 95.0,
+    "stockQuantity": 235
+  },
+  {
+    "baseSku": "AQUELLE",
+    "productName": "Aquell\u00e9 Still Spring Water",
+    "productDescription": "Natural spring water.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "juices-water"
+    ],
+    "variantSku": "AQUELLE-V1",
+    "attributeSummary": "500ml Bottle",
+    "price": 8.0,
+    "stockQuantity": 196
+  },
+  {
+    "baseSku": "AQUELLE",
+    "productName": "Aquell\u00e9 Still Spring Water",
+    "productDescription": "Natural spring water.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "juices-water"
+    ],
+    "variantSku": "AQUELLE-V2",
+    "attributeSummary": "Case 24x500ml",
+    "price": 180.0,
+    "stockQuantity": 231
+  },
+  {
+    "baseSku": "AQUELLE",
+    "productName": "Aquell\u00e9 Still Spring Water",
+    "productDescription": "Natural spring water.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "juices-water"
+    ],
+    "variantSku": "AQUELLE-V3",
+    "attributeSummary": "5L Bottle",
+    "price": 35.0,
+    "stockQuantity": 225
+  },
+  {
+    "baseSku": "JACOBS",
+    "productName": "Jacobs Kronung Instant Coffee",
+    "productDescription": "Rich and smooth premium coffee.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "hot-beverages"
+    ],
+    "variantSku": "JACOBS-V1",
+    "attributeSummary": "100g Jar",
+    "price": 85.0,
+    "stockQuantity": 254
+  },
+  {
+    "baseSku": "JACOBS",
+    "productName": "Jacobs Kronung Instant Coffee",
+    "productDescription": "Rich and smooth premium coffee.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "hot-beverages"
+    ],
+    "variantSku": "JACOBS-V2",
+    "attributeSummary": "200g Jar",
+    "price": 155.0,
+    "stockQuantity": 42
+  },
+  {
+    "baseSku": "FIVEROSE",
+    "productName": "Five Roses Ceylon Blend Tea",
+    "productDescription": "Quality tagless tea bags.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "hot-beverages"
+    ],
+    "variantSku": "FIVEROSE-V1",
+    "attributeSummary": "100 Tagless Bags",
+    "price": 45.0,
+    "stockQuantity": 65
+  },
+  {
+    "baseSku": "FIVEROSE",
+    "productName": "Five Roses Ceylon Blend Tea",
+    "productDescription": "Quality tagless tea bags.",
+    "categories": [
+      "all-products",
+      "beverages",
+      "hot-beverages"
+    ],
+    "variantSku": "FIVEROSE-V2",
+    "attributeSummary": "Box of 200",
+    "price": 85.0,
+    "stockQuantity": 46
+  },
+  {
+    "baseSku": "OMO",
+    "productName": "Omo Auto Washing Powder",
+    "productDescription": "Fast action tough stain removal.",
+    "categories": [
+      "all-products",
+      "cleaning",
+      "laundry"
+    ],
+    "variantSku": "OMO-V1",
+    "attributeSummary": "2kg Bag",
+    "price": 85.0,
+    "stockQuantity": 221
+  },
+  {
+    "baseSku": "OMO",
+    "productName": "Omo Auto Washing Powder",
+    "productDescription": "Fast action tough stain removal.",
+    "categories": [
+      "all-products",
+      "cleaning",
+      "laundry"
+    ],
+    "variantSku": "OMO-V2",
+    "attributeSummary": "4kg Bag",
+    "price": 160.0,
+    "stockQuantity": 188
+  },
+  {
+    "baseSku": "SUNLIGHT",
+    "productName": "Sunlight Laundry Bar",
+    "productDescription": "Multi-purpose laundry soap.",
+    "categories": [
+      "all-products",
+      "cleaning",
+      "laundry"
+    ],
+    "variantSku": "SUNLIGHT-V1",
+    "attributeSummary": "150g Bar",
+    "price": 10.0,
+    "stockQuantity": 70
+  },
+  {
+    "baseSku": "SUNLIGHT",
+    "productName": "Sunlight Laundry Bar",
+    "productDescription": "Multi-purpose laundry soap.",
+    "categories": [
+      "all-products",
+      "cleaning",
+      "laundry"
+    ],
+    "variantSku": "SUNLIGHT-V2",
+    "attributeSummary": "Pack of 4x150g",
+    "price": 38.0,
+    "stockQuantity": 142
+  },
+  {
+    "baseSku": "HANDY",
+    "productName": "Handy Andy Cream Cleaner",
+    "productDescription": "Ammonia fresh multi-purpose cleaner.",
+    "categories": [
+      "all-products",
+      "cleaning",
+      "surface-cleaners"
+    ],
+    "variantSku": "HANDY-V1",
+    "attributeSummary": "750ml Bottle",
+    "price": 28.5,
+    "stockQuantity": 113
+  },
+  {
+    "baseSku": "HANDY",
+    "productName": "Handy Andy Cream Cleaner",
+    "productDescription": "Ammonia fresh multi-purpose cleaner.",
+    "categories": [
+      "all-products",
+      "cleaning",
+      "surface-cleaners"
+    ],
+    "variantSku": "HANDY-V2",
+    "attributeSummary": "Case 6x750ml",
+    "price": 165.0,
+    "stockQuantity": 112
+  },
+  {
+    "baseSku": "DOMESTOS",
+    "productName": "Domestos Thick Bleach",
+    "productDescription": "Extended germ kill.",
+    "categories": [
+      "all-products",
+      "cleaning",
+      "surface-cleaners"
+    ],
+    "variantSku": "DOMESTOS-V1",
+    "attributeSummary": "750ml Bottle",
+    "price": 35.0,
+    "stockQuantity": 289
+  },
+  {
+    "baseSku": "DOMESTOS",
+    "productName": "Domestos Thick Bleach",
+    "productDescription": "Extended germ kill.",
+    "categories": [
+      "all-products",
+      "cleaning",
+      "surface-cleaners"
+    ],
+    "variantSku": "DOMESTOS-V2",
+    "attributeSummary": "3L Value Pack",
+    "price": 120.0,
+    "stockQuantity": 244
+  },
+  {
+    "baseSku": "HD",
+    "productName": "Head & Shoulders Anti-Dandruff",
+    "productDescription": "Classic clean shampoo.",
+    "categories": [
+      "all-products",
+      "personal-care",
+      "hair-care"
+    ],
+    "variantSku": "HD-V1",
+    "attributeSummary": "250ml Bottle",
+    "price": 65.0,
+    "stockQuantity": 86
+  },
+  {
+    "baseSku": "HD",
+    "productName": "Head & Shoulders Anti-Dandruff",
+    "productDescription": "Classic clean shampoo.",
+    "categories": [
+      "all-products",
+      "personal-care",
+      "hair-care"
+    ],
+    "variantSku": "HD-V2",
+    "attributeSummary": "400ml Bottle",
+    "price": 95.0,
+    "stockQuantity": 231
+  },
+  {
+    "baseSku": "COLGATE",
+    "productName": "Colgate Double Action Toothpaste",
+    "productDescription": "Maximum cavity protection.",
+    "categories": [
+      "all-products",
+      "personal-care",
+      "oral-hygiene"
+    ],
+    "variantSku": "COLGATE-V1",
+    "attributeSummary": "100ml Tube",
+    "price": 22.0,
+    "stockQuantity": 108
+  },
+  {
+    "baseSku": "COLGATE",
+    "productName": "Colgate Double Action Toothpaste",
+    "productDescription": "Maximum cavity protection.",
+    "categories": [
+      "all-products",
+      "personal-care",
+      "oral-hygiene"
+    ],
+    "variantSku": "COLGATE-V2",
+    "attributeSummary": "Pack of 3x100ml",
+    "price": 60.0,
+    "stockQuantity": 157
+  }
+]
