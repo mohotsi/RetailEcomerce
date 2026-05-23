@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
+    List<Product> findByBaseSkuIn(List<String> regex);
     // We look up base products by their Base SKU, not their database ID
     Optional<Product> findByBaseSku(String baseSku);
 
@@ -61,4 +62,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "OR EXISTS (SELECT c FROM p.categories c WHERE LOWER(c.seoSlug) LIKE LOWER(CONCAT('%', :keyword, '%'))) " +
             "ORDER BY rank ASC")
     List<Product> searchProductsWithRanking(@Param("keyword") String keyword);
+
+
+
+    // IMPORTANT: This uses nativeQuery = true, so you write raw SQL for your specific database (e.g. PostgreSQL syntax)
+
 }

@@ -23,6 +23,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+
+
 @Service
 @RequiredArgsConstructor
 @Slf4j // Gives us the 'log.info()' capability
@@ -165,7 +167,8 @@ public class CatalogService {
      * @Transactional ensures ALL variants save successfully, or NONE of them do.
      */
     @Transactional
-    public Product createCompleteProduct(Set<String> categorySlugs, String baseSku, String name, String description) {
+    public Product createCompleteProduct(Set<String> categorySlugs, String baseSku, String name, String description,
+                                         String imgURL) {
 
         // 1. Fetch ALL requested categories from the database in one single query
         Set<Category> productCategories = categoryRepository.findBySeoSlugIn(categorySlugs);
@@ -180,6 +183,7 @@ public class CatalogService {
                 .baseSku(baseSku)
                 .name(name)
                 .description(description)
+                .imageUrl(imgURL)
                 .categories(productCategories) // UPDATED: We now pass the List!
                 .build();
 
@@ -215,7 +219,7 @@ public class CatalogService {
         return variant;
     }
 
-
+    @Transactional
     public void importCategoriesFromCsv(List<CategoryImportRow> rows) {
         for (CategoryImportRow row : rows) {
             Category category = categoryRepository.findBySeoSlug(row.getSeoSlug())
@@ -325,6 +329,7 @@ public class CatalogService {
                 String attributeSummary = data[5].replace("\"", "").trim();
                 BigDecimal price = new BigDecimal(data[6].replace("\"", "").trim());
                 int stockQuantity = Integer.parseInt(data[7].replace("\"", "").trim());
+                String imgURl = data[9];
 
                 // 1. Check if the Base Product already exists in the DB
                 if (productRepository.findByBaseSku(baseSku).isEmpty()) {
@@ -332,7 +337,7 @@ public class CatalogService {
                     Set<String> slugs = Set.of(categoriesStr.split(","));
 
                     // Use your existing method to create the parent!
-                    createCompleteProduct(slugs, baseSku, productName, productDescription);
+                    createCompleteProduct(slugs, baseSku, productName, productDescription,imgURl);
                 }
 
                 // 2. Add the physical variant to the parent product
@@ -344,7 +349,7 @@ public class CatalogService {
             throw new RuntimeException("Product CSV processing failed: " + e.getMessage());
         }
     }
-
+       @Transactional
     public void processBulkProductsFromJson(List<ProductImportDto> payload) {
         for (ProductImportDto dto : payload) {
 
@@ -354,7 +359,8 @@ public class CatalogService {
                         dto.getCategories(),
                         dto.getBaseSku(),
                         dto.getProductName(),
-                        dto.getProductDescription()
+                        dto.getProductDescription(),
+                        ""
                 );
             }
 
@@ -399,5 +405,12 @@ public class CatalogService {
         }
 
         return node;
+    }
+    public List<ProductResponseDto> getProductsBySkus(List<String> skus) {
+        return productRepository.findByBaseSkuIn(skus).stream()
+                .map(product -> mapToResponseDto(product)
+
+
+                ).collect(Collectors.toUnmodifiableList());
     }
 }

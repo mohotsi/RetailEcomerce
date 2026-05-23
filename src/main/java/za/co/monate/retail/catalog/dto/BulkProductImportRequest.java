@@ -10,7 +10,9 @@ public class BulkProductImportRequest {
     private String baseSku;
     private String name;
     private String description;
+    private String imageUrl;
     private List<VariantDto> variants;
+
 
     @Data
     public static class VariantDto {
