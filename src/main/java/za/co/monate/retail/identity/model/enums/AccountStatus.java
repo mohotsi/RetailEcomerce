@@ -4,10 +4,10 @@ package za.co.monate.retail.identity.model.enums;
  * ============================================================================
  * ENUM: AccountStatus
  * PURPOSE: The different "Blocked" levels you requested.
- * 
- * TEACHING MOMENT: 
- * We never DELETE a user from a database in an Enterprise system (it breaks 
- * past order history). Instead, we change their status. This is called a "Soft Delete" 
+ * <p>
+ * TEACHING MOMENT:
+ * We never DELETE a user from a database in an Enterprise system (it breaks
+ * past order history). Instead, we change their status. This is called a "Soft Delete"
  * or "State Machine" approach.
  * ============================================================================
  */

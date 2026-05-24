@@ -60,7 +60,7 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
-        
+
         // 1. The Heavy Lifting (Password Verification)
         // This AuthenticationManager talks to Spring Security under the hood.
         // It takes the raw password, hashes it, and compares it to the database.

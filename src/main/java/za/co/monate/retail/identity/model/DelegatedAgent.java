@@ -12,12 +12,12 @@ import java.time.LocalDateTime;
 /**
  * ============================================================================
  * CLASS: DelegatedAgent
- * PURPOSE: Allows a human B2C (or B2B) user to give an AI Bot permission to 
+ * PURPOSE: Allows a human B2C (or B2B) user to give an AI Bot permission to
  * shop on their behalf, but with strict safety rails.
- * 
- * TEACHING MOMENT: 
- * Never give a bot your main password! Instead, the user generates a specific 
- * API Key for the bot. If the bot misbehaves, the user just clicks "Revoke" 
+ * <p>
+ * TEACHING MOMENT:
+ * Never give a bot your main password! Instead, the user generates a specific
+ * API Key for the bot. If the bot misbehaves, the user just clicks "Revoke"
  * to delete the key, and their main account remains totally safe.
  * ============================================================================
  */
@@ -45,12 +45,12 @@ public class DelegatedAgent {
     private String agentApiKey;
 
     // --- BOT SAFETY RAILS ---
-    
+
     // Bots can only spend this much per month without human approval
-    private double monthlySpendingLimit; 
-    
+    private double monthlySpendingLimit;
+
     // Tracks how much the bot has spent this month
-    private double currentMonthSpend; 
+    private double currentMonthSpend;
 
     // If true, the bot can negotiate and buy. If false, the human revoked access.
     private boolean isActive;

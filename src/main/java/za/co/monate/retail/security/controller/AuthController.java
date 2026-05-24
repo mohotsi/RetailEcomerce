@@ -15,7 +15,7 @@ import za.co.monate.retail.security.service.AuthenticationService;
  * ============================================================================
  * CLASS: AuthController
  * PURPOSE: Exposes the login endpoints to the internet.
- * Notice the URL maps to "/api/v1/auth" which we explicitly permitted 
+ * Notice the URL maps to "/api/v1/auth" which we explicitly permitted
  * everyone to access in our SecurityConfig earlier!
  * ============================================================================
  */
@@ -25,6 +25,7 @@ import za.co.monate.retail.security.service.AuthenticationService;
 public class AuthController {
 
     private final AuthenticationService service;
+
     // NEW: The Sign-Up Endpoint
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(

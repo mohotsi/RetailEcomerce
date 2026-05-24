@@ -26,8 +26,8 @@ public class B2CProfile {
     private String lastName;
 
     // The "Xtra Savings" concept. Used to unlock specific PricingRules.
-    private String loyaltyCardNumber; 
+    private String loyaltyCardNumber;
 
     // Used to verify if they can buy restricted products (e.g., alcohol, meds)
-    private LocalDate dateOfBirth; 
+    private LocalDate dateOfBirth;
 }

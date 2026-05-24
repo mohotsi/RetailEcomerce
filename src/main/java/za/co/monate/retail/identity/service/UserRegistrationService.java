@@ -24,7 +24,7 @@ public class UserRegistrationService {
      * LOGIC: Instantly active. Sends a welcome email.
      */
     public AppUser registerB2CCustomer(String email, String rawPassword, B2CProfile profileData) {
-        
+
         AppUser newUser = AppUser.builder()
                 .email(email)
                 .passwordHash(rawPassword) // (We will encrypt this when we add Security)
@@ -48,7 +48,7 @@ public class UserRegistrationService {
      * LOGIC: Status is PENDING. Requires human admin review.
      */
     public AppUser registerB2BClient(String email, String rawPassword, B2BProfile companyData) {
-        
+
         AppUser newUser = AppUser.builder()
                 .email(email)
                 .passwordHash(rawPassword)

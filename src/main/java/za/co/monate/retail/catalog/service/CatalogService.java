@@ -24,7 +24,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 
-
 @Service
 @RequiredArgsConstructor
 @Slf4j // Gives us the 'log.info()' capability
@@ -33,7 +32,6 @@ public class CatalogService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     // Inside CatalogService.java
-
 
 
 // ... (Make sure this is inside your CatalogService class)
@@ -140,6 +138,7 @@ public class CatalogService {
 
         return dto;
     }
+
     public Page<ProductResponseDto> getProductsByCategoryRecursive(String slug, Pageable pageable) {
         // 1. Find the category the user clicked on
         Category targetCategory = categoryRepository.findBySeoSlug(slug)
@@ -240,23 +239,6 @@ public class CatalogService {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void processBulkCategoriesImport(MultipartFile file) {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
             // Skip the header row: name,seoSlug,parentSlug,description,displayOrder
@@ -329,7 +311,7 @@ public class CatalogService {
                 String attributeSummary = data[5].replace("\"", "").trim();
                 BigDecimal price = new BigDecimal(data[6].replace("\"", "").trim());
                 int stockQuantity = Integer.parseInt(data[7].replace("\"", "").trim());
-                String imgURl = data[9];
+                String imgURl = data[8];
 
                 // 1. Check if the Base Product already exists in the DB
                 if (productRepository.findByBaseSku(baseSku).isEmpty()) {
@@ -337,7 +319,7 @@ public class CatalogService {
                     Set<String> slugs = Set.of(categoriesStr.split(","));
 
                     // Use your existing method to create the parent!
-                    createCompleteProduct(slugs, baseSku, productName, productDescription,imgURl);
+                    createCompleteProduct(slugs, baseSku, productName, productDescription, imgURl);
                 }
 
                 // 2. Add the physical variant to the parent product
@@ -349,7 +331,8 @@ public class CatalogService {
             throw new RuntimeException("Product CSV processing failed: " + e.getMessage());
         }
     }
-       @Transactional
+
+    @Transactional
     public void processBulkProductsFromJson(List<ProductImportDto> payload) {
         for (ProductImportDto dto : payload) {
 
@@ -406,6 +389,7 @@ public class CatalogService {
 
         return node;
     }
+
     public List<ProductResponseDto> getProductsBySkus(List<String> skus) {
         return productRepository.findByBaseSkuIn(skus).stream()
                 .map(product -> mapToResponseDto(product)

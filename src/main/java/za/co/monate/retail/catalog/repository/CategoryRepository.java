@@ -18,6 +18,7 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
 
     // 2. Find all children categories that have this specific parent
     List<Category> findByParentCategory_Id(Long parentId);
+
     /**
      * Finds all categories that do NOT have a parent.
      * These are your main navigation items (Groceries, Electronics, etc.)

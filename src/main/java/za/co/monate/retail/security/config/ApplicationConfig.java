@@ -16,8 +16,8 @@ import za.co.monate.retail.identity.repository.AppUserRepository;
 /**
  * ============================================================================
  * CLASS: ApplicationConfig
- * PURPOSE: Holds the core "Beans" (global objects) that Spring Security needs 
- * to function. It wires together the Database, the Cryptography, and the 
+ * PURPOSE: Holds the core "Beans" (global objects) that Spring Security needs
+ * to function. It wires together the Database, the Cryptography, and the
  * Authentication Manager.
  * ============================================================================
  */
@@ -29,7 +29,7 @@ public class ApplicationConfig {
 
     /**
      * 1. THE FILING CABINET (UserDetailsService)
-     * We tell Spring exactly how to look up a user. When Spring asks for a user 
+     * We tell Spring exactly how to look up a user. When Spring asks for a user
      * by their "username" (which is their email in our system), we query our DB.
      */
     @Bean
@@ -40,7 +40,7 @@ public class ApplicationConfig {
 
     /**
      * 2. THE CRYPTOGRAPHER (PasswordEncoder)
-     * We define the mathematical algorithm used to scramble passwords. 
+     * We define the mathematical algorithm used to scramble passwords.
      * BCrypt is the industry standard. It automatically salts the passwords.
      */
     @Bean
@@ -50,8 +50,8 @@ public class ApplicationConfig {
 
     /**
      * 3. THE DATA ACCESS ENGINE (AuthenticationProvider)
-     * This object takes the raw password the user typed, grabs the hashed password 
-     * from the Filing Cabinet, and gives them both to the Cryptographer to see 
+     * This object takes the raw password the user typed, grabs the hashed password
+     * from the Filing Cabinet, and gives them both to the Cryptographer to see
      * if they match.
      */
     @Bean
@@ -64,7 +64,7 @@ public class ApplicationConfig {
 
     /**
      * 4. THE BOSS (AuthenticationManager)
-     * This is the manager we called inside our `AuthenticationService`. 
+     * This is the manager we called inside our `AuthenticationService`.
      * We just ask Spring to provide us its default manager.
      */
     @Bean

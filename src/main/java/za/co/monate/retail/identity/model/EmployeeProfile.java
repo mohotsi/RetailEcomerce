@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 /**
  * ============================================================================
  * CLASS: EmployeeProfile
- * PURPOSE: Holds internal HR/Staff data for Merchandisers, Warehouse Workers, 
+ * PURPOSE: Holds internal HR/Staff data for Merchandisers, Warehouse Workers,
  * and Customer Support agents.
  * ============================================================================
  */
@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class EmployeeProfile {
-    
+
     @Id
     private Long id;
 
@@ -30,7 +30,7 @@ public class EmployeeProfile {
 
     private String firstName;
     private String lastName;
-    
+
     @Column(unique = true, nullable = false)
     private String employeeNumber; // e.g., "EMP-9932"
 
@@ -38,9 +38,9 @@ public class EmployeeProfile {
 
     // --- SUPPORT METRICS ---
     // How many carts has this employee successfully checked out for customers?
-    private int assistedSalesCount; 
-    
+    private int assistedSalesCount;
+
     // Customer Support agents are usually given a daily budget to give away 
     // free shipping or 10% discounts to keep angry customers happy.
-    private double dailyDiscretionaryBudget; 
+    private double dailyDiscretionaryBudget;
 }

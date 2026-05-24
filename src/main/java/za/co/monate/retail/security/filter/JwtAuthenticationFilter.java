@@ -20,7 +20,7 @@ import java.io.IOException;
 /**
  * ============================================================================
  * CLASS: JwtAuthenticationFilter
- * PURPOSE: Intercepts HTTP requests, extracts the JWT from the "Authorization" 
+ * PURPOSE: Intercepts HTTP requests, extracts the JWT from the "Authorization"
  * header, validates it, and tells Spring Security who the user is.
  * ============================================================================
  */
@@ -51,19 +51,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         // 2. Extract the token (Remove "Bearer " from the string)
         jwt = authHeader.substring(7);
-        
+
         // 3. Extract the email from the token
         userEmail = jwtService.extractUsername(jwt);
 
         // 4. If we have an email, and the user isn't already authenticated in this session
         if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            
+
             // Go to the database and pull up their full profile
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
 
             // 5. Mathematically verify the token hasn't been tampered with
             if (jwtService.isTokenValid(jwt, userDetails)) {
-                
+
                 // 6. Give them the "All Clear" to access the restricted APIs
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                         userDetails,
@@ -71,7 +71,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                         userDetails.getAuthorities()
                 );
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                
+
                 // Update the Security Context so the rest of the app knows who is logged in
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }

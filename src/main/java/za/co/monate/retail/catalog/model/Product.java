@@ -19,7 +19,7 @@ import java.util.Set;
  * CLASS: Product
  * PURPOSE: The central entity of the Catalog domain. It holds metadata,
  * search optimization, and security constraints.
- *
+ * <p>
  * NOTE: The actual Price is stored in the 'PackSize' entity, because a single
  * Product (e.g., Aromat) can be sold in multiple sizes (Single vs Case).
  * ============================================================================
@@ -29,7 +29,12 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "products")
+@Table(name = "products", indexes = {
+        // We explicitly define indexes here.
+        // Ensure the 'columnList' matches your actual field names!
+        @Index(name = "idx_product_name", columnList = "name"),
+        @Index(name = "idx_base_sku", columnList = "baseSku")
+})
 public class Product {
 
     @Id

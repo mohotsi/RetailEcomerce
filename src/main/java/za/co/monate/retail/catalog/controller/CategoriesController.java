@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import za.co.monate.retail.catalog.CategoryImportRow;
 import za.co.monate.retail.catalog.dto.CategoryNodeDto;
 import za.co.monate.retail.catalog.dto.CategorySummaryDto;
-import za.co.monate.retail.catalog.model.Category;
 import za.co.monate.retail.catalog.repository.CategoryRepository;
 import za.co.monate.retail.catalog.repository.ProductRepository;
 import za.co.monate.retail.catalog.service.CatalogService;
@@ -37,12 +36,14 @@ public class CategoriesController {
         catalogService.processBulkCategoriesImport(file);
         return ResponseEntity.ok("Taxonomy updated successfully");
     }
+
     @PostMapping(value = "/import/json", consumes = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasAuthority('ROLE_SYSTEM_ADMIN')")
     public ResponseEntity<String> importCategoriesJson(@RequestBody List<CategoryImportRow> categories) {
         catalogService.processBulkCategoriesFromJson(categories);
         return ResponseEntity.ok("Taxonomy updated successfully from JSON payload");
     }
+
     /**
      * =================================================================
      * NAVIGATION MENU ENDPOINT
@@ -56,7 +57,7 @@ public class CategoriesController {
         List<CategorySummaryDto> tree = categoryRepository.findAllByParentCategoryIsNull().stream()
                 .map(category ->
                         {
-                            val categorySummaryDto= new CategorySummaryDto();
+                            val categorySummaryDto = new CategorySummaryDto();
                             categorySummaryDto.setId(category.getId());
                             categorySummaryDto.setName(category.getName());
                             categorySummaryDto.setSeoSlug(category.getSeoSlug());
@@ -65,9 +66,10 @@ public class CategoriesController {
 
                         }
 
-                        ).collect(Collectors.toUnmodifiableList());
+                ).collect(Collectors.toUnmodifiableList());
         return ResponseEntity.ok(tree);
     }
+
     @GetMapping("/navigationTree")
     public ResponseEntity<List<CategoryNodeDto>> getNavigationTree() {
         return ResponseEntity.ok(catalogService.getNavigationTree());

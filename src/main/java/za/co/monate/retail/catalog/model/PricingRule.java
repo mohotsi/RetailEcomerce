@@ -30,7 +30,7 @@ public class PricingRule {
     private Integer conditionQuantity; // The 'X' in Buy X
     private Integer rewardQuantity;    // The 'Y' in Get Y Free
     private Double discountValue;      // Used for % or Flat amount
-    
+
     // Tiered pricing specific
     private Integer tierMinQuantity;
     private Integer tierMaxQuantity;

@@ -13,9 +13,9 @@ public class ProductImage {
 
     private String cdnUrl; // e.g., "https://cdn.monate.co.za/images/aromat.jpg"
     private String altText; // Crucial for visually impaired users and SEO
-    
+
     private boolean isPrimary; // The main image shown on the search results
-    
+
     @ManyToOne
     @JoinColumn(name = "product_id")
     @JsonBackReference

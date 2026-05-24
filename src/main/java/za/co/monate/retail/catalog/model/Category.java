@@ -2,7 +2,6 @@ package za.co.monate.retail.catalog.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,7 +29,6 @@ public class Category {
     // --- NEW: The link to the children ---
     @OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL)
     private List<Category> subCategories;
-
 
 
 }

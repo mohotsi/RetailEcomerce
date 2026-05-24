@@ -19,7 +19,7 @@ public class Warehouse {
 
     private String name; // e.g., "Gauteng Main Distribution Centre"
     private String province; // "Western Cape", "Pretoria", "Eastern Cape", "Free State"
-    
+
     // Address fields
     private String streetAddress;
     private String city;

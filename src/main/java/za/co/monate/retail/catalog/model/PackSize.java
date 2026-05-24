@@ -24,7 +24,7 @@ public class PackSize {
 
     private String description; // e.g., "200g Shaker", "Case of 12 x 200g"
     private int baseUnitMultiplier; // 1 for single, 12 for case
-    
+
     private double price;
     private String barcode; // Each pack size needs its own barcode/SKU
 }

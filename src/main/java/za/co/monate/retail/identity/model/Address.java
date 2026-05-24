@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 /**
  * ============================================================================
  * CLASS: Address
- * PURPOSE: Represents a physical location tied to a user. Supports the concept 
+ * PURPOSE: Represents a physical location tied to a user. Supports the concept
  * of an "Address Book" where users can have multiple saved locations.
  * ============================================================================
  */
@@ -31,24 +31,14 @@ public class Address {
     @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
     private AppUser user;
-
-    // --- TYPOLOGY ---
-    // Instead of two booleans (isBilling, isShipping), an Enum is cleaner.
-    public enum AddressType {
-        BILLING_ONLY,
-        SHIPPING_ONLY,
-        BILLING_AND_SHIPPING
-    }
     @Enumerated(EnumType.STRING)
     private AddressType addressType;
-
     // --- RECEIVER DETAILS ---
     // Crucial for the delivery driver. Who actually accepts the parcel?
     private String receiverFirstName;
     private String receiverLastName;
     private String receiverPhone;
     private String companyName; // Populated if it's a B2B delivery site
-
     // --- PHYSICAL LOCATION ---
     private String streetLine1;
     private String streetLine2;
@@ -57,17 +47,22 @@ public class Address {
     private String province; // e.g., "Western Cape"
     private String postalCode;
     private String countryIso; // e.g., "ZA" (Better than a hardcoded string)
-
     // --- GEOSPATIAL DATA FOR BOTS & ROUTING ---
     // We use Double instead of String so we don't have to parse it for math calculations.
     private Double latitude;
     private Double longitude;
-
     // --- ADDRESS BOOK MANAGEMENT ---
     private boolean isDefaultShipping;
     private boolean isDefaultBilling;
-    
-    // The "Soft Delete". If false, it doesn't show in the UI/Bot API, 
+    // The "Soft Delete". If false, it doesn't show in the UI/Bot API,
     // but remains in the DB for historical invoice accuracy.
-    private boolean isVisible; 
+    private boolean isVisible;
+
+    // --- TYPOLOGY ---
+    // Instead of two booleans (isBilling, isShipping), an Enum is cleaner.
+    public enum AddressType {
+        BILLING_ONLY,
+        SHIPPING_ONLY,
+        BILLING_AND_SHIPPING
+    }
 }

@@ -21,8 +21,8 @@ import java.util.stream.Collectors;
 /**
  * ============================================================================
  * CLASS: JwtService
- * PURPOSE: The cryptographic engine of the B2B Hub. 
- * It signs tokens (wristbands) so hackers cannot forge a fake login, and it 
+ * PURPOSE: The cryptographic engine of the B2B Hub.
+ * It signs tokens (wristbands) so hackers cannot forge a fake login, and it
  * reads incoming tokens to verify who is making the API request.
  * ============================================================================
  */
@@ -31,8 +31,8 @@ public class JwtService {
 
     /*
      * TEACHING MOMENT: The @Value annotation
-     * Instead of hardcoding our secret key in the Java file (which is a massive 
-     * security risk if pushed to GitHub), Spring Boot reads the application.properties 
+     * Instead of hardcoding our secret key in the Java file (which is a massive
+     * security risk if pushed to GitHub), Spring Boot reads the application.properties
      * file when the server starts and safely injects the values right here.
      */
     @Value("${monate.security.jwt.secret-key}")
@@ -53,7 +53,6 @@ public class JwtService {
      */
 
 
-
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> extraClaims = new HashMap<>();
 
@@ -71,7 +70,7 @@ public class JwtService {
     }
 
     /**
-     * The Token Factory. Builds the JWT with the user's details, issue date, 
+     * The Token Factory. Builds the JWT with the user's details, issue date,
      * expiration date, and signs it mathematically using our Secret Key.
      */
     public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
@@ -85,7 +84,7 @@ public class JwtService {
     }
 
     /**
-     * The Bouncer Check. Ensures the token belongs to the user trying to use it 
+     * The Bouncer Check. Ensures the token belongs to the user trying to use it
      * and that the token hasn't expired yet.
      */
     public boolean isTokenValid(String token, UserDetails userDetails) {
@@ -107,7 +106,7 @@ public class JwtService {
     }
 
     /**
-     * Parses the token. If a hacker tampers with the token payload, this method 
+     * Parses the token. If a hacker tampers with the token payload, this method
      * will throw an exception because the Signature won't match the Secret Key.
      */
     private Claims extractAllClaims(String token) {
@@ -119,7 +118,7 @@ public class JwtService {
     }
 
     /**
-     * Converts our text-based secret key into a cryptographic Key object 
+     * Converts our text-based secret key into a cryptographic Key object
      * that the JJWT library can use for its math.
      */
     private Key getSignInKey() {

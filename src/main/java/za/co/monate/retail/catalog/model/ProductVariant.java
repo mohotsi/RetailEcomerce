@@ -2,6 +2,7 @@ package za.co.monate.retail.catalog.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.math.BigDecimal;
 
 @Entity
@@ -22,7 +23,7 @@ public class ProductVariant {
     private String sku; // e.g., "NIKE-TEE-001-RED-M"
 
     // What makes this variant unique? (e.g., "Red - Medium", "500ml", "1kg")
-    private String attributeSummary; 
+    private String attributeSummary;
 
     // Price is stored as BigDecimal, NEVER as a double/float to prevent rounding errors!
     @Column(nullable = false, precision = 10, scale = 2)

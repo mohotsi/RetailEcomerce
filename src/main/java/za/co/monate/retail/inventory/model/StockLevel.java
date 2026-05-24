@@ -31,7 +31,7 @@ public class StockLevel {
     private StockStatus stockStatus;
 
     private int availableQuantity;
-    
+
     // Bots reserve stock during negotiation to prevent race conditions
-    private int reservedQuantity; 
+    private int reservedQuantity;
 }

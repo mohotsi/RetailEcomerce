@@ -15,5 +15,5 @@ public class RegisterRequest {
     private String password;
     // For this tutorial, we will let them choose a role. 
     // In production, you might default this to B2C_CUSTOMER.
-    private AppRole role; 
+    private AppRole role;
 }
