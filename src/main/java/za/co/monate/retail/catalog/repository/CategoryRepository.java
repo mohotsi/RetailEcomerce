@@ -1,6 +1,7 @@
 package za.co.monate.retail.catalog.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import za.co.monate.retail.catalog.model.Category;
 
 import java.util.List;
@@ -24,4 +25,14 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
      * These are your main navigation items (Groceries, Electronics, etc.)
      */
     List<Category> findAllByParentCategoryIsNull();
+
+    /*
+     * Retrieves ONLY root categories meant for the red navigation bar.
+     * Enforces the time-boxing: validFrom must be past, validTo must be future (or null).
+     */
+    @Query("SELECT c FROM Category c WHERE c.parentCategory IS NULL " +
+            "AND c.showInNav = true " +
+            "AND (c.validFrom IS NULL OR c.validFrom <= CURRENT_TIMESTAMP) " +
+            "AND (c.validTo IS NULL OR c.validTo >= CURRENT_TIMESTAMP)")
+    List<Category> findActiveNavigationTree();
 }
