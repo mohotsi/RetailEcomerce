@@ -49,5 +49,14 @@ public class Category {
     @Column(name = "valid_to")
     private LocalDateTime validTo;
 
-
+    /**
+     * Helper method to determine if this category should be visible right now
+     * based on the server's current clock.
+     */
+    public boolean isCurrentlyValid() {
+        java.time.LocalDateTime now = java.time.LocalDateTime.now();
+        boolean started = (validFrom == null || now.isAfter(validFrom) || now.isEqual(validFrom));
+        boolean unexpired = (validTo == null || now.isBefore(validTo) || now.isEqual(validTo));
+        return started && unexpired;
+    }
 }

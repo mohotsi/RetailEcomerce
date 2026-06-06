@@ -28,7 +28,6 @@ public class CategoriesController {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
 
-
     @PostMapping("/import")
     @PreAuthorize("hasAuthority('ROLE_SYSTEM_ADMIN')")
     public ResponseEntity<String> importCategories(@RequestParam("file") MultipartFile file) {
@@ -62,10 +61,7 @@ public class CategoriesController {
                             categorySummaryDto.setName(category.getName());
                             categorySummaryDto.setSeoSlug(category.getSeoSlug());
                             return categorySummaryDto;
-
-
                         }
-
                 ).collect(Collectors.toUnmodifiableList());
         return ResponseEntity.ok(tree);
     }
@@ -73,5 +69,19 @@ public class CategoriesController {
     @GetMapping("/navigationTree")
     public ResponseEntity<List<CategoryNodeDto>> getNavigationTree() {
         return ResponseEntity.ok(catalogService.getNavigationTree());
+    }
+
+    /**
+     * =================================================================
+     * PROMOTIONAL MERCHANDISING ENDPOINT
+     * =================================================================
+     * Validates if a category (standard or virtual) is active and unexpired.
+     * Used as a gatekeeper when a user clicks a homepage promotional banner.
+     */
+    @GetMapping("/{slug}")
+    public ResponseEntity<CategoryNodeDto> getCategoryBySlug(@PathVariable String slug) {
+        return catalogService.getValidCategoryBySlug(slug)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }

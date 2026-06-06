@@ -45,6 +45,7 @@ public class SecurityConfiguration {
                                 // Allow anyone to register, log in, and view public product catalogs
                                 .requestMatchers("/api/v1/auth/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/api/v1/catalog/**").permitAll()
+                                .requestMatchers("/api/v1/ui/**").permitAll()
                                 .requestMatchers("/api/v1/public/catalog/**").permitAll()
                                 // --- SYSTEM ADMIN ONLY: CATEGORY CONFIGURATION ---
                                 // Only an Admin can build the "buckets" that the Merchandisers use.

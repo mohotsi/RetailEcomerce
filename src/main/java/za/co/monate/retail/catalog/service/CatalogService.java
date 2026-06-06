@@ -20,6 +20,7 @@ import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -397,4 +398,36 @@ public class CatalogService {
 
                 ).collect(Collectors.toUnmodifiableList());
     }
+    /**
+     * Serves the Angular Product Grid when clicking a promotional banner
+     */
+    @Transactional(readOnly = true)
+    public Optional<CategoryNodeDto> getValidCategoryBySlug(String slug) {
+        return categoryRepository.findBySeoSlug(slug)
+                .filter(Category::isCurrentlyValid) // Enforces time-boxing expiration
+                .map(this::mapToDto);
+    }
+
+    /**
+     * Recursive mapping utilizing your existing CategoryNodeDto
+     */
+    private CategoryNodeDto mapToDto(Category category) {
+        CategoryNodeDto dto = new CategoryNodeDto();
+        dto.setName(category.getName());
+        dto.setSeoSlug(category.getSeoSlug());
+
+        // The recursive magic happens here
+        if (category.getSubCategories() != null && !category.getSubCategories().isEmpty()) {
+            List<CategoryNodeDto> children = category.getSubCategories().stream()
+                    .map(this::mapToDto)
+                    .collect(Collectors.toList());
+            dto.setSubCategories(children);
+        }
+
+        return dto;
+    }
+
+    // Inside za.co.monate.retail.catalog.service.CatalogService
+
+
 }
