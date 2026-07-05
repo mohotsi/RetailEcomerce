@@ -22,11 +22,10 @@ public class PromotionalBanner {
 
     @Column(nullable = false)
     private String title; // Alt-text for accessibility and internal tracking
-
-    @Column(name = "image_url", nullable = false)
+    @Column(name = "image_url", nullable = false, length = 1000)
     private String imageUrl; // S3 link or local asset path (e.g., /assets/thokoman.jpg)
 
-    @Column(name = "target_url", nullable = false)
+    @Column(name = "target_url", nullable = false,length = 1000)
     private String targetUrl; // The frontend route to trigger (e.g., /category/thokoman-brand)
     
     // Master kill switch for marketing to disable an ad instantly

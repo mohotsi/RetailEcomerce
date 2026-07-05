@@ -14,6 +14,7 @@ import za.co.monate.retail.catalog.model.Product;
 import za.co.monate.retail.catalog.model.ProductVariant;
 import za.co.monate.retail.catalog.repository.CategoryRepository;
 import za.co.monate.retail.catalog.repository.ProductRepository;
+import za.co.monate.retail.exception.ResourceNotFoundException;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -143,7 +144,7 @@ public class CatalogService {
     public Page<ProductResponseDto> getProductsByCategoryRecursive(String slug, Pageable pageable) {
         // 1. Find the category the user clicked on
         Category targetCategory = categoryRepository.findBySeoSlug(slug)
-                .orElseThrow(() -> new RuntimeException("Category not found: " + slug));
+                .orElseThrow(() -> new ResourceNotFoundException("Category not found with slug: " + slug));
 
         // 2. Start a list of IDs to search for
         List<Long> categoryIds = new ArrayList<>();

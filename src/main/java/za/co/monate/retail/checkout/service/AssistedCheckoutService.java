@@ -1,6 +1,7 @@
 package za.co.monate.retail.checkout.service;
 
 import org.springframework.stereotype.Service;
+import za.co.monate.retail.exception.UnauthorizedActionException;
 import za.co.monate.retail.identity.model.AppUser;
 import za.co.monate.retail.identity.model.EmployeeProfile;
 import za.co.monate.retail.identity.model.enums.AppRole;
@@ -28,7 +29,7 @@ public class AssistedCheckoutService {
 
         // 1. SECURITY CHECK: Ensure the person calling this is actually Support!
         if (supportAgent.getRole() != AppRole.CUSTOMER_SUPPORT) {
-            throw new SecurityException("Only Customer Support can assist with checkouts!");
+            throw new UnauthorizedActionException("Only Customer Support can assist with checkouts!");
         }
 
         EmployeeProfile agentProfile = supportAgent.getEmployeeProfile();

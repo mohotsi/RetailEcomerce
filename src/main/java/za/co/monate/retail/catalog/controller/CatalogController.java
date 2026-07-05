@@ -91,7 +91,8 @@ public class CatalogController {
     @PostMapping("/import/api")
     public ResponseEntity<String> importViaApi(@RequestBody BulkProductImportRequest request) {
         catalogService.createCompleteProduct(
-                Set.of(request.getCategorySlug()), request.getBaseSku(), request.getName(), request.getDescription(),
+                Set.of(request.getCategorySlug()), request.getBaseSku(),
+                request.getName(), request.getDescription(),
                 request.getImageUrl()
         );
 
@@ -147,18 +148,14 @@ public class CatalogController {
         Pageable pageable = PageRequest.of(page, size);
 
 
-        try {
+
             // 1. Send the raw, messy user input to our Brain (SearchService)
-            Page<ProductResponseDto> searchResults = searchService.performSmartSearch(query, pageable);
+            Page<ProductResponseDto> searchResults = searchService
+                    .performSmartSearch(query, pageable);
 
             // 2. Return the sorted, ranked list to Angular with a 200 OK status
             return ResponseEntity.ok(searchResults);
 
-        } catch (Exception e) {
-            // If the database fails, log it and return a 500 error so Angular knows something broke
-            log.error("❌ Search failed for query: {}", query, e);
-            return ResponseEntity.internalServerError().build();
-        }
     }
 
     @GetMapping("/by-skus")
